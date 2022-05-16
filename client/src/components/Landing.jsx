@@ -2,7 +2,7 @@ import React from "react";
 import Category from "./Category";
 import SearchCategories from "./SearchCategories";
 
-export const Landing = () => {
+const Landing = () => {
   return (
     <div>
       <SearchCategories />
@@ -10,3 +10,5 @@ export const Landing = () => {
     </div>
   );
 };
+
+export default Landing;

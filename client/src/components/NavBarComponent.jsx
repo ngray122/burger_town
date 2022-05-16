@@ -1,28 +1,40 @@
 import React from "react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarText,
+  NavbarToggler,
+  Collapse,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
 
-const Navigation = () => {
+const NavBarComponent = (props) => {
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarBrand href="/">Bob's BurgerTown</NavbarBrand>
         <NavbarToggler onClick={function noRefCheck() {}} />
         <Collapse navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
+              <NavLink href={props.nav_link} onClick={props.onclick_function}>
+                {props.nav_component}
               </NavLink>
             </NavItem>
+
             <UncontrolledDropdown inNavbar nav>
               <DropdownToggle caret nav>
-                Options
+                Go To
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
+
                 <DropdownItem divider />
                 <DropdownItem>Reset</DropdownItem>
               </DropdownMenu>
@@ -35,4 +47,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default NavBarComponent;
