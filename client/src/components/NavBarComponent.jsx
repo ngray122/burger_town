@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -14,12 +14,17 @@ import {
 } from "reactstrap";
 
 const NavBarComponent = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const isToggle = (e) => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div>
       <Navbar color="dark" dark expand="md">
         <NavbarBrand href="/">Bob's BurgerTown</NavbarBrand>
-        <NavbarToggler onClick={function noRefCheck() {}} />
-        <Collapse navbar>
+        <NavbarToggler onClick={isToggle} />
+        <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
               <NavLink href={""}>{props.nav_component}</NavLink>
@@ -29,7 +34,7 @@ const NavBarComponent = (props) => {
               <DropdownToggle caret nav>
                 Go To
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu end>
                 <DropdownItem>Option 1</DropdownItem>
 
                 <DropdownItem divider />
