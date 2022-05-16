@@ -13,7 +13,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-const NavBarComponent = (props) => {
+const NavBarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const isToggle = (e) => {
@@ -27,7 +27,7 @@ const NavBarComponent = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href={""}>{props.nav_component}</NavLink>
+              <NavLink href={""}>Nav item</NavLink>
             </NavItem>
 
             <UncontrolledDropdown inNavbar nav>
