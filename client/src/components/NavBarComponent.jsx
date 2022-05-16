@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import {
   Navbar,
   NavbarBrand,
@@ -15,6 +16,7 @@ import {
 
 const NavBarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { category, id } = useParams();
 
   const isToggle = (e) => {
     setIsOpen(!isOpen);
