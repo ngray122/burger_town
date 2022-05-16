@@ -2,7 +2,6 @@ import React from "react";
 import {
   Navbar,
   NavbarBrand,
-  NavbarText,
   NavbarToggler,
   Collapse,
   Nav,
@@ -23,9 +22,7 @@ const NavBarComponent = (props) => {
         <Collapse navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href={props.nav_link} onClick={props.onclick_function}>
-                {props.nav_component}
-              </NavLink>
+              <NavLink href={""}>{props.nav_component}</NavLink>
             </NavItem>
 
             <UncontrolledDropdown inNavbar nav>
@@ -40,7 +37,6 @@ const NavBarComponent = (props) => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
         </Collapse>
       </Navbar>
     </div>
