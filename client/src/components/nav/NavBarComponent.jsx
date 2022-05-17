@@ -11,6 +11,8 @@ import {
   DropdownToggle,
 } from "reactstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 
 const NavBarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,10 +20,6 @@ const NavBarComponent = () => {
   // const { headers, values } = categoryList;
   const headers = Object.keys(categoryList);
   const values = Object.values(categoryList);
-
-  console.log("values -> ", values);
-  console.log("values typeof -> ", typeof values);
-  console.log("categoryList -> ", categoryList);
 
   const isToggle = (e) => {
     setIsOpen(!isOpen);
@@ -37,10 +35,7 @@ const NavBarComponent = () => {
         console.log("error!! ====> ", err);
       });
   }, []);
-  {
-    console.log("headers[0]-> ", headers[0]);
-    console.log("values[0]-> ", values[0]);
-  }
+
   return (
     <div>
       <Navbar color="dark" dark>
@@ -53,7 +48,7 @@ const NavBarComponent = () => {
             <UncontrolledDropdown nav>
               {headers.map((header, i) => (
                 <DropdownToggle key={i} nav>
-                  <NavLink href={values[i]}>{header}</NavLink>
+                  <Link to={header}>{header}</Link>
                 </DropdownToggle>
               ))}
             </UncontrolledDropdown>
