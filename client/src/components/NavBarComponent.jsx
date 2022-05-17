@@ -46,8 +46,8 @@ const NavBarComponent = () => {
             <NavItem>Item</NavItem>
 
             <UncontrolledDropdown nav>
-              {headers.map((header) => (
-                <DropdownToggle inNavbar caret nav>
+              {headers.map((header, i) => (
+                <DropdownToggle key={i} caret nav>
                   {header}
                 </DropdownToggle>
               ))}
