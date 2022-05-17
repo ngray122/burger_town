@@ -19,6 +19,7 @@ const NavBarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { category } = useParams();
   const [categoryList, setCategoryList] = useState([]);
+  const headers = Object.keys(categoryList);
 
   const isToggle = (e) => {
     setIsOpen(!isOpen);
@@ -28,40 +29,28 @@ const NavBarComponent = () => {
     axios
       .get(`https://bobsburgers-api.herokuapp.com/`)
       .then((res) => {
-        // console.log("res =>", res);
         setCategoryList(res.data);
       })
       .catch((err) => {
         console.log("error!! ====> ", err);
       });
   }, []);
-  {
-    // console.log("category list -> ", categoryList);
-  }
+
   return (
     <div>
-      <Navbar color="dark" dark expand="md">
+      <Navbar color="dark" dark>
         <NavbarBrand href="/">Bob's BurgerTown</NavbarBrand>
         <NavbarToggler onClick={isToggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
-            {/* <h1>{Object.keys(categoryList)}</h1> */}
-            {console.log(typeof categoryList)}
-            {/* {categoryList.map((i, category) => {
-              <NavItem>
-                <NavLink href={""}>{category.name}</NavLink>{" "}
-              </NavItem>; */}
+            <NavItem>Item</NavItem>
 
-            <UncontrolledDropdown inNavbar nav>
-              <DropdownToggle caret nav>
-                Go To
-              </DropdownToggle>
-              <DropdownMenu end>
-                <DropdownItem>Option 1</DropdownItem>
-
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
-              </DropdownMenu>
+            <UncontrolledDropdown nav>
+              {headers.map((header) => (
+                <DropdownToggle inNavbar caret nav>
+                  {header}
+                </DropdownToggle>
+              ))}
             </UncontrolledDropdown>
           </Nav>
         </Collapse>
