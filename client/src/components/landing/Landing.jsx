@@ -1,6 +1,5 @@
 import React from "react";
-import Category from "../nav/Category";
-import SearchCategories from "../search/SearchCategories";
+import Category from "../card/Category";
 
 const Landing = () => {
   return (
