@@ -1,11 +1,10 @@
 import React from "react";
-import Category from "./Category";
-import SearchCategories from "./SearchCategories";
+import Category from "../components/nav/Category";
+import SearchCategories from "../components/search/SearchCategories";
 
 const Landing = () => {
   return (
     <div>
-      <SearchCategories />
       <Category />
     </div>
   );
