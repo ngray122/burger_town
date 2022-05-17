@@ -16,11 +16,10 @@ import { useParams } from "react-router";
 
 const NavBarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [categoryList, setCategoryList] = useState({});
-  // const { headers, values } = categoryList;
-  const headers = Object.keys(categoryList);
-  const values = Object.values(categoryList);
-
+  const [rootEndpoint, setRootEndpoint] = useState({});
+  const headers = Object.keys(rootEndpoint);
+  // const values = Object.values(rootEndpoint);
+  // const { categories } = useParams();
   const isToggle = (e) => {
     setIsOpen(!isOpen);
   };
@@ -29,7 +28,7 @@ const NavBarComponent = () => {
     axios
       .get(`https://bobsburgers-api.herokuapp.com/`)
       .then((res) => {
-        setCategoryList(res.data);
+        setRootEndpoint(res.data);
       })
       .catch((err) => {
         console.log("error!! ====> ", err);
@@ -39,7 +38,7 @@ const NavBarComponent = () => {
   return (
     <div>
       <Navbar color="dark" dark>
-        <NavbarBrand href="/">Bob's BurgerTown</NavbarBrand>
+        <NavbarBrand href="">Bob's BurgerTown</NavbarBrand>
         <NavbarToggler onClick={isToggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>

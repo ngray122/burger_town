@@ -2,27 +2,27 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Category = () => {
-  const [apiList, setApiList] = useState([]);
+  const [categoryList, setCategoryList] = useState([]);
 
-  // useEffect(() => {
-  //   axios
-  //     // .get(`https://swapi.dev/api/${category}/${id}`)
-  //     .get(`https://bobsburgers-api.herokuapp.com/characters/`)
-  //     .then((response) => {
-  //       console.log("response =>", response);
-  //       setApiList(response.data);
-  //       // console.log(response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log("error!! ====> ", err);
-  //     });
-  // }, [setApiList]);
+  useEffect(() => {
+    axios
+      // characters will be dynamic
+      .get(`https://bobsburgers-api.herokuapp.com/characters/`)
+      .then((response) => {
+        setCategoryList(response.data);
+      })
+      .catch((err) => {
+        console.log("error!! ====> ", err);
+      });
+  }, []);
+  // console.log("Category List -> ", categoryList);
   return (
     <div>
-      {apiList.map((item, i) => {
-        return <h1>{item.name}</h1>;
-      })}
-      <h1>Hello</h1>
+      <h1>Character</h1>
+      {/* {categoryList.map(item,i)=>{
+        return   <h1></h1>
+      
+      }} */}
     </div>
   );
 };
