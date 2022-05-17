@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router";
 
-export const Dropdown = () => {
+const Dropdown = () => {
   const [categoryList, setCategoryList] = useState({});
+  const { category } = useParams();
   // const { headers, values } = categoryList;
   const headers = Object.keys(categoryList);
   const values = Object.values(categoryList);
@@ -16,5 +18,7 @@ export const Dropdown = () => {
         console.log("error!! ====> ", err);
       });
   }, []);
-  return <div>Dropdown</div>;
+
+  return <div>{}</div>;
 };
+export default Dropdown;

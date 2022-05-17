@@ -10,6 +10,7 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
 } from "reactstrap";
+import axios from "axios";
 
 const NavBarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +27,16 @@ const NavBarComponent = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    axios
+      .get(`https://bobsburgers-api.herokuapp.com/`)
+      .then((res) => {
+        setCategoryList(res.data);
+      })
+      .catch((err) => {
+        console.log("error!! ====> ", err);
+      });
+  }, []);
   {
     console.log("headers[0]-> ", headers[0]);
     console.log("values[0]-> ", values[0]);
