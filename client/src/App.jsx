@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Landing from "./landing/Landing";
+import Landing from "./components/landing/Landing";
 import NavBarComponent from "./components/nav/NavBarComponent";
 
 function App() {

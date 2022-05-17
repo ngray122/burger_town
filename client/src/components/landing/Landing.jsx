@@ -1,6 +1,6 @@
 import React from "react";
-import Category from "../components/nav/Category";
-import SearchCategories from "../components/search/SearchCategories";
+import Category from "../nav/Category";
+import SearchCategories from "../search/SearchCategories";
 
 const Landing = () => {
   return (
