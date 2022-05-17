@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
 import {
   Navbar,
   NavbarBrand,
@@ -11,31 +9,27 @@ import {
   NavLink,
   UncontrolledDropdown,
   DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from "reactstrap";
 
 const NavBarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { category } = useParams();
-  const [categoryList, setCategoryList] = useState([]);
+  const [categoryList, setCategoryList] = useState({});
+  // const { headers, values } = categoryList;
   const headers = Object.keys(categoryList);
+  const values = Object.values(categoryList);
+
+  console.log("values -> ", values);
+  console.log("values typeof -> ", typeof values);
+  console.log("categoryList -> ", categoryList);
 
   const isToggle = (e) => {
     setIsOpen(!isOpen);
   };
 
-  useEffect(() => {
-    axios
-      .get(`https://bobsburgers-api.herokuapp.com/`)
-      .then((res) => {
-        setCategoryList(res.data);
-      })
-      .catch((err) => {
-        console.log("error!! ====> ", err);
-      });
-  }, []);
-
+  {
+    console.log("headers[0]-> ", headers[0]);
+    console.log("values[0]-> ", values[0]);
+  }
   return (
     <div>
       <Navbar color="dark" dark>
@@ -47,8 +41,8 @@ const NavBarComponent = () => {
 
             <UncontrolledDropdown nav>
               {headers.map((header, i) => (
-                <DropdownToggle key={i} caret nav>
-                  {header}
+                <DropdownToggle key={i} nav>
+                  <NavLink href={values[i]}>{header}</NavLink>
                 </DropdownToggle>
               ))}
             </UncontrolledDropdown>
