@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
 
-          <Route path="/:categories" element={<Category />} />
+          <Route path="/categories/:header" element={<Category />} />
         </Routes>
       </>
     </div>

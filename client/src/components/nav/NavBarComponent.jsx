@@ -12,11 +12,13 @@ import {
 } from "reactstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 
 const NavBarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [rootEndpoint, setRootEndpoint] = useState({});
   const headers = Object.keys(rootEndpoint);
+  const { header } = useParams();
 
   const isToggle = (e) => {
     setIsOpen(!isOpen);
@@ -24,7 +26,7 @@ const NavBarComponent = () => {
 
   useEffect(() => {
     axios
-      .get(`https://bobsburgers-api.herokuapp.com/`)
+      .get(`https://bobsburgers-api.herokuapp.com/:${header}`)
       .then((res) => {
         setRootEndpoint(res.data);
       })
@@ -45,7 +47,7 @@ const NavBarComponent = () => {
             <UncontrolledDropdown nav>
               {headers.map((header, i) => (
                 <DropdownToggle key={i} nav>
-                  <Link to={header}>{header}</Link>
+                  <Link to={`/categories/${header}`}>{header}</Link>
                 </DropdownToggle>
               ))}
             </UncontrolledDropdown>
