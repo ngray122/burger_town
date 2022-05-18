@@ -26,7 +26,7 @@ const NavBarComponent = () => {
 
   useEffect(() => {
     axios
-      .get(`https://bobsburgers-api.herokuapp.com/:${header}`)
+      .get(`https://bobsburgers-api.herokuapp.com/`)
       .then((res) => {
         setRootEndpoint(res.data);
       })
