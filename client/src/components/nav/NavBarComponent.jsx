@@ -12,14 +12,12 @@ import {
 } from "reactstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router";
 
 const NavBarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [rootEndpoint, setRootEndpoint] = useState({});
   const headers = Object.keys(rootEndpoint);
-  // const values = Object.values(rootEndpoint);
-  // const { categories } = useParams();
+
   const isToggle = (e) => {
     setIsOpen(!isOpen);
   };

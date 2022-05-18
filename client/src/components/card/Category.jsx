@@ -24,9 +24,6 @@ const Category = () => {
           <h1 key={i}>{header.name}</h1>
         ))}
       </div>
-      {/* {categoryList.map((header, i) => (
-        <h1 key={i}>{header}</h1>
-      ))} */}
     </div>
   );
 };
