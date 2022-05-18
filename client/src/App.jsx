@@ -13,7 +13,6 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Landing />} />
-
           <Route path="/categories/:header" element={<Category />} />
         </Routes>
       </>

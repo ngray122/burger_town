@@ -6,19 +6,16 @@ import {
   Collapse,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
 } from "reactstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router";
 
 const NavBarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [rootEndpoint, setRootEndpoint] = useState({});
   const headers = Object.keys(rootEndpoint);
-  const { header } = useParams();
 
   const isToggle = (e) => {
     setIsOpen(!isOpen);
@@ -43,7 +40,6 @@ const NavBarComponent = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>Item</NavItem>
-
             <UncontrolledDropdown nav>
               {headers.map((header, i) => (
                 <DropdownToggle key={i} nav>
