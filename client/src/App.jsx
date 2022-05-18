@@ -8,17 +8,15 @@ import Category from "./components/card/Category";
 function App() {
   return (
     <div className="App">
-      <NavBarComponent />
-      <Landing />
+      <>
+        <NavBarComponent />
 
-      <Routes>
-        {/* <Route path="/">
-        </Route>
+        <Routes>
+          <Route path="/" element={<Landing />} />
 
-        <Route exact path="/:categories">
-          <Category />
-        </Route> */}
-      </Routes>
+          <Route path="/:categories" element={<Category />} />
+        </Routes>
+      </>
     </div>
   );
 }

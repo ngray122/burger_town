@@ -3,14 +3,14 @@ import axios from "axios";
 
 const Category = () => {
   const [categoryList, setCategoryList] = useState({});
-  const headers = Object.keys(categoryList);
+  const headers = Object.values(categoryList);
 
   useEffect(() => {
     axios
       // characters will be dynamic
       .get(`https://bobsburgers-api.herokuapp.com/characters/`)
       .then((response) => {
-        setCategoryList(Object.values(response.data));
+        setCategoryList(response.data);
       })
       .catch((err) => {
         console.log("error!! ====> ", err);
@@ -19,10 +19,14 @@ const Category = () => {
   return (
     <div>
       <h1>Character</h1>
-      {categoryList.map((header, i) => {
-        <h1 key={i}>{header}</h1>;
-        console.log(header.name);
-      })}
+      <div>
+        {headers.map((header, i) => (
+          <h1 key={i}>{header.name}</h1>
+        ))}
+      </div>
+      {/* {categoryList.map((header, i) => (
+        <h1 key={i}>{header}</h1>
+      ))} */}
     </div>
   );
 };
