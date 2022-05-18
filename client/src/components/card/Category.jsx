@@ -22,8 +22,8 @@ const Category = () => {
     <div>
       {/* <h1>Character</h1> */}
       <h1>{header}</h1>
-      {console.log("--->", header)}
-      {console.log(typeof headers)}
+      {/* {console.log("--->", header)}
+      {console.log(typeof headers)} */}
       <div>
         {headers.map((header, i) => (
           <>
