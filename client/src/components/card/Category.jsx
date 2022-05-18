@@ -1,28 +1,35 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router";
 
 const Category = () => {
-  const [apiList, setApiList] = useState([]);
+  const [categoryList, setCategoryList] = useState({});
+  const headers = Object.values(categoryList);
+  const { header } = useParams();
 
-  // useEffect(() => {
-  //   axios
-  //     // .get(`https://swapi.dev/api/${category}/${id}`)
-  //     .get(`https://bobsburgers-api.herokuapp.com/characters/`)
-  //     .then((response) => {
-  //       console.log("response =>", response);
-  //       setApiList(response.data);
-  //       // console.log(response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log("error!! ====> ", err);
-  //     });
-  // }, [setApiList]);
+  useEffect(() => {
+    axios
+      .get(`https://bobsburgers-api.herokuapp.com/${header}/`)
+      .then((response) => {
+        setCategoryList(response.data);
+      })
+      .catch((err) => {
+        console.log("error!! ====> ", err);
+      });
+  }, [header]);
   return (
     <div>
-      {apiList.map((item, i) => {
-        return <h1>{item.name}</h1>;
-      })}
-      <h1>Hello</h1>
+      <h1>{header}</h1>
+
+      <div>
+        {headers.map((header, id) => (
+          <>
+            <h1 key={id}>
+              {header.id} {header.name}
+            </h1>
+          </>
+        ))}
+      </div>
     </div>
   );
 };
