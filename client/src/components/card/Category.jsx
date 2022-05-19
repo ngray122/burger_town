@@ -30,12 +30,12 @@ const Category = () => {
   }, [header]);
 
   const getColumnsForRow = () => {
-    let items = headers.map((header, index) => {
+    let items = headers.map((header) => {
       return (
         <Col>
-          <Card key={header}>
+          <Card key={header.id}>
             <CardBody>
-              <CardTitle>Name: {header.name}</CardTitle>
+              <CardTitle tag="h4">Name: {header.name}</CardTitle>
               <CardText>Voiced By: {header.voicedBy}</CardText>
             </CardBody>
           </Card>
