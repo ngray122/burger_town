@@ -10,6 +10,8 @@ import {
   CardTitle,
   CardSubtitle,
   CardText,
+  CardGroup,
+  CardImg,
 } from "reactstrap";
 
 const Category = () => {
@@ -33,12 +35,21 @@ const Category = () => {
     let items = headers.map((header) => {
       return (
         <Col>
-          <Card key={header.id}>
-            <CardBody>
-              <CardTitle tag="h4">Name: {header.name}</CardTitle>
-              <CardText>Voiced By: {header.voicedBy}</CardText>
-            </CardBody>
-          </Card>
+          <CardGroup>
+            <Card key={header.id}>
+              <CardBody>
+                <CardImg
+                  alt="category image"
+                  src={header.image}
+                  top
+                  width="100%"
+                />
+                {console.log(header.img)}
+                <CardTitle tag="h4">Name: {header.name}</CardTitle>
+                <CardText>Voiced By: {header.voicedBy}</CardText>
+              </CardBody>
+            </Card>
+          </CardGroup>
         </Col>
       );
     });
