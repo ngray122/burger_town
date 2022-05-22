@@ -37,7 +37,6 @@ const Category = () => {
         <Col>
           <OneCard key={header.id}>
             <CardBody>
-              {/* Character { id, NAME, IMAGE, gender, hairColor, occupation, firstEpisode, voicedBy, url, wikiUrl } */}
               {header.image ? (
                 <CardImg
                   alt="category image"
@@ -46,15 +45,13 @@ const Category = () => {
                   width="100%"
                 />
               ) : (
-                <p>NO IMAGE AVAILABLE</p>
+                ""
               )}
               {header.name ? (
-                <CardTitle tag="h4">Name: {header.name}</CardTitle>
+                <CardTitle tag="h4"> {header.name}</CardTitle>
               ) : (
                 ""
               )}
-
-              <CardText>Voiced By: {header.voicedBy}</CardText>
             </CardBody>
           </OneCard>
         </Col>
