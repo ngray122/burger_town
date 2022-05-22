@@ -5,7 +5,6 @@ import {
   Row,
   Col,
   Container,
-  Card,
   CardBody,
   CardTitle,
   CardSubtitle,
@@ -13,6 +12,7 @@ import {
   CardGroup,
   CardImg,
 } from "reactstrap";
+import OneCard from "./OneCard";
 
 const Category = () => {
   const [categoryList, setCategoryList] = useState({});
@@ -35,21 +35,28 @@ const Category = () => {
     let items = headers.map((header) => {
       return (
         <Col>
-          <CardGroup>
-            <Card key={header.id}>
-              <CardBody>
+          <OneCard key={header.id}>
+            <CardBody>
+              {/* Character { id, NAME, IMAGE, gender, hairColor, occupation, firstEpisode, voicedBy, url, wikiUrl } */}
+              {header.image ? (
                 <CardImg
                   alt="category image"
                   src={header.image}
                   top
                   width="100%"
                 />
-                {console.log(header.img)}
+              ) : (
+                <p>NO IMAGE AVAILABLE</p>
+              )}
+              {header.name ? (
                 <CardTitle tag="h4">Name: {header.name}</CardTitle>
-                <CardText>Voiced By: {header.voicedBy}</CardText>
-              </CardBody>
-            </Card>
-          </CardGroup>
+              ) : (
+                ""
+              )}
+
+              <CardText>Voiced By: {header.voicedBy}</CardText>
+            </CardBody>
+          </OneCard>
         </Col>
       );
     });
