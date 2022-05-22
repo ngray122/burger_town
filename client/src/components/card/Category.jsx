@@ -13,6 +13,7 @@ import {
   CardImg,
 } from "reactstrap";
 import OneCard from "./OneCard";
+import { Link } from "react-router-dom";
 
 const Category = () => {
   const [categoryList, setCategoryList] = useState({});
@@ -48,7 +49,19 @@ const Category = () => {
                 ""
               )}
               {header.name ? (
-                <CardTitle tag="h4"> {header.name}</CardTitle>
+                <CardTitle tag="h4">Name: {header.name}</CardTitle>
+              ) : (
+                ""
+              )}
+              {header.episode ? (
+                <CardSubtitle>
+                  S{header.season} E{header.episode}
+                </CardSubtitle>
+              ) : (
+                ""
+              )}
+              {header.price ? (
+                <CardSubtitle>Price: {header.price}</CardSubtitle>
               ) : (
                 ""
               )}
