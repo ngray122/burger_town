@@ -32,8 +32,8 @@ const Category = () => {
   const getColumnsForRow = () => {
     let items = headers.map((header) => {
       return (
-        <Col>
-          <OneCard key={header.id}>
+        <Col key={header.id}>
+          <OneCard>
             <CardBody>
               {header.image ? (
                 <CardImg
@@ -54,7 +54,6 @@ const Category = () => {
               {header.episode ? (
                 <CardSubtitle>
                   S{header.season} E{header.episode}
-                  {console.log(typeof episode)}{" "}
                 </CardSubtitle>
               ) : (
                 ""
