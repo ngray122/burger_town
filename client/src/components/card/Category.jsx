@@ -8,12 +8,9 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
-  CardText,
-  CardGroup,
   CardImg,
 } from "reactstrap";
 import OneCard from "./OneCard";
-import { Link } from "react-router-dom";
 
 const Category = () => {
   const [categoryList, setCategoryList] = useState({});
@@ -53,9 +50,11 @@ const Category = () => {
               ) : (
                 ""
               )}
+              {/* && header.episode.length < 5 */}
               {header.episode ? (
                 <CardSubtitle>
                   S{header.season} E{header.episode}
+                  {console.log(typeof episode)}{" "}
                 </CardSubtitle>
               ) : (
                 ""
