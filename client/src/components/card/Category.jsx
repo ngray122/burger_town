@@ -46,7 +46,7 @@ const Category = () => {
                 ""
               )}
               {header.name ? (
-                <CardTitle tag="h4">Name: {header.name}</CardTitle>
+                <CardTitle tag="h4"> {header.name}</CardTitle>
               ) : (
                 ""
               )}
