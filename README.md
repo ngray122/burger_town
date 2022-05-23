@@ -1,6 +1,6 @@
 # BurgerTown
 
-> BurgerTown is a UI created with ReactApp that utilizes the [Bob's Burgers API](https://www.bobsburgersapi.com/) to access all things Bob's Burgers.
+> BurgerTown is a User Interface created with ReactApp that utilizes the [Bob's Burgers API](https://www.bobsburgersapi.com/) to access all things Bob's Burgers.
 
 ## Install
 
