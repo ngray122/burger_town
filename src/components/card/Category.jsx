@@ -30,9 +30,7 @@ const Category = () => {
   }, [header]);
 
   const getColumnsForRow = () => {
-    let items = headers.map((header) => {
-      const { id, image, name, episode, season, price } = header;
-
+    let items = headers.map(({ id, image, name, episode, season, price }) => {
       return (
         <Col key={id}>
           <OneCard>
