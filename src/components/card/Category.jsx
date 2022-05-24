@@ -31,38 +31,27 @@ const Category = () => {
 
   const getColumnsForRow = () => {
     let items = headers.map((header) => {
+      const { id, image, name, episode, season, price } = header;
+
       return (
-        <Col key={header.id}>
+        <Col key={id}>
           <OneCard>
             <CardBody>
-              {header.image ? (
-                <CardImg
-                  alt="category image"
-                  src={header.image}
-                  top
-                  width="100%"
-                />
+              {image ? (
+                <CardImg alt="category image" src={image} top width="100%" />
               ) : (
                 ""
               )}
-              {header.name ? (
-                <CardTitle tag="h4"> {header.name}</CardTitle>
-              ) : (
-                ""
-              )}
+              {name ? <CardTitle tag="h4"> {name}</CardTitle> : ""}
               {/* && header.episode.length < 5 */}
-              {header.episode ? (
+              {episode ? (
                 <CardSubtitle>
-                  S{header.season} E{header.episode}
+                  S{season} E{episode}
                 </CardSubtitle>
               ) : (
                 ""
               )}
-              {header.price ? (
-                <CardSubtitle>Price: {header.price}</CardSubtitle>
-              ) : (
-                ""
-              )}
+              {price ? <CardSubtitle>Price: {price}</CardSubtitle> : ""}
             </CardBody>
           </OneCard>
         </Col>
