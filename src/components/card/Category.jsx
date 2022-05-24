@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
-import { Row, Col, Container, CardBody, CardSubtitle } from "reactstrap";
+import { Row, Col, Container, CardBody } from "reactstrap";
 import OneCard from "./OneCard";
 import CardImg from "./CardImg";
 import CardTitle from "./CardTitle";
+import CardSubtitle from "./CardSubtitle";
 
 const Category = () => {
   const [categoryList, setCategoryList] = useState({});
@@ -31,12 +32,8 @@ const Category = () => {
             <CardBody>
               <CardImg image={image} />
               <CardTitle name={name} />
-              {episode ? (
-                <CardSubtitle>
-                  S{season} E{episode}
-                </CardSubtitle>
-              ) : null}
-              {price ? <CardSubtitle>Price: {price}</CardSubtitle> : null}
+              <CardSubtitle season={season} episode={episode} />
+              <CardSubtitle price={price} />
             </CardBody>
           </OneCard>
         </Col>
