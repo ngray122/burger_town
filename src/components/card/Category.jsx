@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import OneCard from "./OneCard";
 import CardImg from "./CardImg";
+import CardText from "./CardText";
 
 const Category = () => {
   const [categoryList, setCategoryList] = useState({});
@@ -36,8 +37,7 @@ const Category = () => {
           <OneCard>
             <CardBody>
               <CardImg image={image} />
-              {/* {console.log(image)}{" "} */}
-              {name ? <CardTitle tag="h4"> {name}</CardTitle> : null}
+              <CardText name={name} />
               {episode ? (
                 <CardSubtitle>
                   S{season} E{episode}
