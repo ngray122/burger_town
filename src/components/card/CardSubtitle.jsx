@@ -1,12 +1,12 @@
 import React from "react";
 
-const CardSubtitle = (props) =>
-  props.episode ? (
+const CardSubtitle = ({ season, episode, price }) =>
+  episode ? (
     <h6>
-      S{props.season} E{props.episode}
+      S{season} E{episode}
     </h6>
-  ) : null || props.price ? (
-    <h6>Price: {props.price}</h6>
+  ) : null || price ? (
+    <h6>Price: {price}</h6>
   ) : null;
 
 export default CardSubtitle;
