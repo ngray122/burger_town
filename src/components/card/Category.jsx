@@ -8,9 +8,9 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
-  CardImg,
 } from "reactstrap";
 import OneCard from "./OneCard";
+import CardImg from "./CardImg";
 
 const Category = () => {
   const [categoryList, setCategoryList] = useState({});
@@ -35,21 +35,15 @@ const Category = () => {
         <Col key={id}>
           <OneCard>
             <CardBody>
-              {image ? (
-                <CardImg alt="category image" src={image} top width="100%" />
-              ) : (
-                ""
-              )}
-              {name ? <CardTitle tag="h4"> {name}</CardTitle> : ""}
-              {/* && header.episode.length < 5 */}
+              <CardImg image={image} />
+              {/* {console.log(image)}{" "} */}
+              {name ? <CardTitle tag="h4"> {name}</CardTitle> : null}
               {episode ? (
                 <CardSubtitle>
                   S{season} E{episode}
                 </CardSubtitle>
-              ) : (
-                ""
-              )}
-              {price ? <CardSubtitle>Price: {price}</CardSubtitle> : ""}
+              ) : null}
+              {price ? <CardSubtitle>Price: {price}</CardSubtitle> : null}
             </CardBody>
           </OneCard>
         </Col>
