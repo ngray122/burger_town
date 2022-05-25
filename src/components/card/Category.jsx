@@ -30,7 +30,7 @@ const Category = () => {
   }, [header]);
 
   const getColumnsForRow = () => {
-    let items = headers.map((header, index) => {
+    let items = headers.map((header) => {
       return (
         <Col>
           <Card key={header}>
@@ -44,11 +44,12 @@ const Category = () => {
     });
     return items;
   };
+
   return (
     <>
       <Container>
         {" "}
-        <Row xs={1} md={columnsPerRow}>
+        <Row xs={1} md={currentPosts}>
           {getColumnsForRow()}
         </Row>
       </Container>
