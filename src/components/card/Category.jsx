@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
-import {
-  Row,
-  Col,
-  Container,
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-} from "reactstrap";
+import { Row, Col, Container, CardBody } from "reactstrap";
+import OneCard from "./OneCard";
+import CardImg from "./CardImg";
+import CardTitle from "./CardTitle";
+import CardSubtitle from "./CardSubtitle";
 
 const Category = () => {
   const [categoryList, setCategoryList] = useState({});
@@ -32,13 +27,15 @@ const Category = () => {
   const getColumnsForRow = () => {
     let items = headers.map(({ id, image, name, episode, season, price }) => {
       return (
-        <Col>
-          <Card key={header}>
+        <Col key={id}>
+          <OneCard>
             <CardBody>
-              <CardTitle>Name: {header.name}</CardTitle>
-              <CardText>Voiced By: {header.voicedBy}</CardText>
+              <CardImg image={image} />
+              <CardTitle name={name} />
+              <CardSubtitle season={season} episode={episode} />
+              <CardSubtitle price={price} />
             </CardBody>
-          </Card>
+          </OneCard>
         </Col>
       );
     });
