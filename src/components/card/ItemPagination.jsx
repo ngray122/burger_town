@@ -9,15 +9,14 @@ const ItemPagination = ({
   setCurrentPage,
 }) => {
   const pageNumbers = [];
-  const previousPage = (e) => currentPage - 1;
-  const nextPage = (e) => currentPage + 1;
+
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pageNumbers.push(i);
   }
   return (
     <Pagination>
       <PaginationLink onClick={() => setCurrentPage(currentPage - 1)}>
-        jdfhskdf
+        back
       </PaginationLink>
       {console.log("currentpage", currentPage)}
 
@@ -28,8 +27,8 @@ const ItemPagination = ({
           </PaginationLink>
         </PaginationItem>
       ))}
-      <PaginationLink next onClick={(e) => nextPage()}>
-        jdfhskdf
+      <PaginationLink next onClick={() => setCurrentPage(currentPage + 1)}>
+        next
       </PaginationLink>
     </Pagination>
   );
