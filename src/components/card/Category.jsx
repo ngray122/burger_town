@@ -12,6 +12,9 @@ const Category = () => {
   const headers = Object.values(categoryList);
   const { header } = useParams();
   const columnsPerRow = 4;
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
   useEffect(() => {
     axios
@@ -23,7 +26,11 @@ const Category = () => {
         console.log("error!! ====> ", err);
       });
   }, [header]);
-
+  const indexOfLastPost = currentPage * itemsPerPage;
+  const indexOfFirstPost = indexOfLastPost - itemsPerPage;
+  {
+    console.log(headers);
+  }
   const getColumnsForRow = () => {
     let items = headers.map(({ id, image, name, episode, season, price }) => {
       return (
@@ -39,14 +46,16 @@ const Category = () => {
         </Col>
       );
     });
-    return items;
+    const currentItems = items.slice(indexOfFirstPost, indexOfLastPost);
+
+    return currentItems;
   };
 
   return (
     <>
       <Container>
         {" "}
-        <Row xs={1} md={currentPosts}>
+        <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}
         </Row>
       </Container>
