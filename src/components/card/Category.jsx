@@ -15,6 +15,7 @@ const Category = () => {
   const columnsPerRow = 4;
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
@@ -29,9 +30,7 @@ const Category = () => {
   }, [header]);
   const indexOfLastPost = currentPage * itemsPerPage;
   const indexOfFirstPost = indexOfLastPost - itemsPerPage;
-  {
-    console.log(headers);
-  }
+
   const getColumnsForRow = () => {
     let items = headers.map(({ id, image, name, episode, season, price }) => {
       return (
@@ -65,6 +64,8 @@ const Category = () => {
           itemsPerPage={itemsPerPage}
           totalItems={categoryList.length}
           paginate={paginate}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
       </Container>
     </>
