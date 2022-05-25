@@ -12,6 +12,12 @@ const Category = () => {
   const headers = Object.values(categoryList);
   const { header } = useParams();
   const columnsPerRow = 4;
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = items.slice(indexOfFirstPost, indexOfLastPost);
 
   useEffect(() => {
     axios
@@ -25,7 +31,7 @@ const Category = () => {
   }, [header]);
 
   const getColumnsForRow = () => {
-    let items = headers.map(({ id, image, name, episode, season, price }) => {
+    let items = headers.map((header, index) => {
       return (
         <Col key={id}>
           <OneCard>
@@ -41,12 +47,11 @@ const Category = () => {
     });
     return items;
   };
-
   return (
     <>
       <Container>
         {" "}
-        <Row xs={1} md={currentPosts}>
+        <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}
         </Row>
       </Container>
