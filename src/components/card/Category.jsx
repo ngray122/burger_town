@@ -16,6 +16,7 @@ const Category = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(20);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     axios
@@ -63,6 +64,7 @@ const Category = () => {
           <ItemPagination
             itemsPerPage={itemsPerPage}
             totalItems={categoryList.length}
+            paginate={paginate}
           />
         </Row>
       </Container>
