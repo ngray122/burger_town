@@ -13,9 +13,8 @@ const Category = () => {
   const headers = Object.values(categoryList);
   const { header } = useParams();
   const columnsPerRow = 4;
-  const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [itemsPerPage] = useState(20);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
@@ -61,12 +60,12 @@ const Category = () => {
         {" "}
         <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}
-          <ItemPagination
-            itemsPerPage={itemsPerPage}
-            totalItems={categoryList.length}
-            paginate={paginate}
-          />
         </Row>
+        <ItemPagination
+          itemsPerPage={itemsPerPage}
+          totalItems={categoryList.length}
+          paginate={paginate}
+        />
       </Container>
     </>
   );
