@@ -6,6 +6,7 @@ import OneCard from "./OneCard";
 import CardImg from "./CardImg";
 import CardTitle from "./CardTitle";
 import CardSubtitle from "./CardSubtitle";
+import Pagination from "./Pagination";
 
 const Category = () => {
   const [categoryList, setCategoryList] = useState({});
@@ -14,7 +15,7 @@ const Category = () => {
   const columnsPerRow = 4;
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(20);
 
   useEffect(() => {
     axios
@@ -34,16 +35,18 @@ const Category = () => {
   const getColumnsForRow = () => {
     let items = headers.map(({ id, image, name, episode, season, price }) => {
       return (
-        <Col key={id}>
-          <OneCard>
-            <CardBody>
-              <CardImg image={image} />
-              <CardTitle name={name} />
-              <CardSubtitle season={season} episode={episode} />
-              <CardSubtitle price={price} />
-            </CardBody>
-          </OneCard>
-        </Col>
+        <>
+          <Col key={id}>
+            <OneCard>
+              <CardBody>
+                <CardImg image={image} />
+                <CardTitle name={name} />
+                <CardSubtitle season={season} episode={episode} />
+                <CardSubtitle price={price} />
+              </CardBody>
+            </OneCard>
+          </Col>
+        </>
       );
     });
     const currentItems = items.slice(indexOfFirstPost, indexOfLastPost);
@@ -57,6 +60,10 @@ const Category = () => {
         {" "}
         <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}
+          <Pagination
+            itemsPerPage={itemsPerPage}
+            totalItems={categoryList.length}
+          />
         </Row>
       </Container>
     </>
