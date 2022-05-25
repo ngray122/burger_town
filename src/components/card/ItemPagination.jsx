@@ -22,7 +22,7 @@ const ItemPagination = ({
 
       {pageNumbers.map((number) => (
         <PaginationItem key={number}>
-          <PaginationLink onClick={(e) => paginate(number)}>
+          <PaginationLink onClick={() => paginate(number)}>
             {number}
           </PaginationLink>
         </PaginationItem>

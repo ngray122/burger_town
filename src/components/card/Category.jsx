@@ -56,7 +56,7 @@ const Category = () => {
   return (
     <>
       <Container>
-        {" "}
+        <h1>{header}</h1>
         <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}
         </Row>
