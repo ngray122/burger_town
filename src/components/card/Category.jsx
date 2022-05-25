@@ -6,7 +6,7 @@ import OneCard from "./OneCard";
 import CardImg from "./CardImg";
 import CardTitle from "./CardTitle";
 import CardSubtitle from "./CardSubtitle";
-import Pagination from "./Pagination";
+import ItemPagination from "./ItemPagination";
 
 const Category = () => {
   const [categoryList, setCategoryList] = useState({});
@@ -60,7 +60,7 @@ const Category = () => {
         {" "}
         <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}
-          <Pagination
+          <ItemPagination
             itemsPerPage={itemsPerPage}
             totalItems={categoryList.length}
           />
