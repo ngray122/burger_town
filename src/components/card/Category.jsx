@@ -6,6 +6,7 @@ import OneCard from "./OneCard";
 import CardImg from "./CardImg";
 import CardTitle from "./CardTitle";
 import CardSubtitle from "./CardSubtitle";
+import ItemPagination from "./ItemPagination";
 
 const Category = () => {
   const [categoryList, setCategoryList] = useState({});
@@ -29,34 +30,50 @@ const Category = () => {
         console.log("error!! ====> ", err);
       });
   }, [header]);
+  const indexOfLastPost = currentPage * itemsPerPage;
+  const indexOfFirstPost = indexOfLastPost - itemsPerPage;
 
   const getColumnsForRow = () => {
     let items = headers.map((header, index) => {
       return (
-        <Col key={id}>
-          <OneCard>
-            <CardBody>
-              <CardImg image={image} />
-              <CardTitle name={name} />
-              <CardSubtitle season={season} episode={episode} />
-              <CardSubtitle price={price} />
-            </CardBody>
-          </OneCard>
-        </Col>
+        <>
+          <Col>
+            <OneCard>
+              <CardBody key={id}>
+                <CardImg image={image} />
+                <CardTitle name={name} />
+                <CardSubtitle season={season} episode={episode} />
+                <CardSubtitle price={price} />
+              </CardBody>
+            </OneCard>
+          </Col>
+        </>
       );
     });
-    return items;
+
+    return items.slice(indexOfFirstPost, indexOfLastPost);
   };
   return (
     <>
       <Container>
-        {" "}
+        <h1>{header}</h1>
         <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}
         </Row>
+        <ItemPagination
+          itemsPerPage={itemsPerPage}
+          totalItems={categoryList.length}
+          paginate={paginate}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </Container>
     </>
   );
 };
 
 export default Category;
+ItemPagination.defaultProps = {
+  itemsPerPage: 20,
+};
+git;

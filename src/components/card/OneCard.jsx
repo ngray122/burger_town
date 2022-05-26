@@ -1,9 +1,5 @@
 import React from "react";
 import { Card } from "reactstrap";
 
-const OneCard = (props) => (
-  <div>
-    <Card>{props.children}</Card>
-  </div>
-);
+const OneCard = ({ children }) => <Card>{children}</Card>;
 export default OneCard;
