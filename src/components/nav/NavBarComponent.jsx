@@ -35,7 +35,7 @@ const NavBarComponent = () => {
   return (
     <div>
       <Navbar color="dark" dark>
-        <NavbarBrand href="">Bob's BurgerTown</NavbarBrand>
+        <NavbarBrand href="/">Bob's BurgerTown</NavbarBrand>
         <NavbarToggler onClick={isToggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
