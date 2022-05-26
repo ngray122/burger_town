@@ -32,7 +32,7 @@ const Category = () => {
   const indexOfFirstPost = indexOfLastPost - itemsPerPage;
 
   const getColumnsForRow = () => {
-    let items = headers.map((header, index) => {
+    let items = headers.map(({ id, image, name, episode, season, price }) => {
       return (
         <>
           <Col>
@@ -51,6 +51,7 @@ const Category = () => {
 
     return items.slice(indexOfFirstPost, indexOfLastPost);
   };
+
   return (
     <>
       <Container>
