@@ -1,6 +1,12 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import { Input } from "reactstrap";
 
-const SearchCategories = () => {};
+const SearchCategories = () => {
+  return (
+    <div>
+      <Input placeholder="Search..." type="text"></Input>
+    </div>
+  );
+};
 
 export default SearchCategories;
