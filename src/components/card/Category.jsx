@@ -36,8 +36,8 @@ const Category = () => {
       return (
         <>
           <Col>
-            <OneCard key={id}>
-              <CardBody>
+            <OneCard>
+              <CardBody key={id}>
                 <CardImg image={image} />
                 <CardTitle name={name} />
                 <CardSubtitle season={season} episode={episode} />
@@ -48,9 +48,8 @@ const Category = () => {
         </>
       );
     });
-    const currentItems = items.slice(indexOfFirstPost, indexOfLastPost);
 
-    return currentItems;
+    return items.slice(indexOfFirstPost, indexOfLastPost);
   };
 
   return (
@@ -73,3 +72,6 @@ const Category = () => {
 };
 
 export default Category;
+ItemPagination.defaultProps = {
+  itemsPerPage: 20,
+};
