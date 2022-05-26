@@ -25,7 +25,7 @@ const ItemPagination = ({
           </PaginationLink>
         </PaginationItem>
       ))}
-      <PaginationLink next onClick={() => setCurrentPage(currentPage + 1)}>
+      <PaginationLink onClick={() => setCurrentPage(currentPage + 1)}>
         next
       </PaginationLink>
     </Pagination>

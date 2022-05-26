@@ -35,8 +35,8 @@ const Category = () => {
     let items = headers.map(({ id, image, name, episode, season, price }) => {
       return (
         <>
-          <Col key={id}>
-            <OneCard>
+          <Col>
+            <OneCard key={id}>
               <CardBody>
                 <CardImg image={image} />
                 <CardTitle name={name} />
