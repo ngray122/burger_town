@@ -18,8 +18,6 @@ const ItemPagination = ({
       <PaginationLink onClick={() => setCurrentPage(currentPage - 1)}>
         back
       </PaginationLink>
-      {console.log("currentpage", currentPage)}
-
       {pageNumbers.map((number) => (
         <PaginationItem key={number}>
           <PaginationLink onClick={() => paginate(number)}>
