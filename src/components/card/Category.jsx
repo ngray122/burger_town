@@ -13,12 +13,10 @@ const Category = () => {
   const headers = Object.values(categoryList);
   const { header } = useParams();
   const columnsPerRow = 4;
-  const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = items.slice(indexOfFirstPost, indexOfLastPost);
+  const [itemsPerPage] = useState(20);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     axios
@@ -34,7 +32,7 @@ const Category = () => {
   const indexOfFirstPost = indexOfLastPost - itemsPerPage;
 
   const getColumnsForRow = () => {
-    let items = headers.map((header, index) => {
+    let items = headers.map(({ id, image, name, episode, season, price }) => {
       return (
         <>
           <Col>
@@ -53,6 +51,7 @@ const Category = () => {
 
     return items.slice(indexOfFirstPost, indexOfLastPost);
   };
+
   return (
     <>
       <Container>
@@ -76,4 +75,3 @@ export default Category;
 ItemPagination.defaultProps = {
   itemsPerPage: 20,
 };
-git;
