@@ -7,6 +7,7 @@ import CardImg from "./CardImg";
 import CardTitle from "./CardTitle";
 import CardSubtitle from "./CardSubtitle";
 import ItemPagination from "./ItemPagination";
+import SearchCategories from "../search/SearchCategories";
 
 const Category = () => {
   const [categoryList, setCategoryList] = useState({});
@@ -56,6 +57,8 @@ const Category = () => {
     <>
       <Container>
         <h1>{header}</h1>
+        <SearchCategories header={header} headers={headers} />
+
         <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}
         </Row>

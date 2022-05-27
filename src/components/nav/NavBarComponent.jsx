@@ -11,7 +11,6 @@ import {
 } from "reactstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import SearchCategories from "../search/SearchCategories";
 
 const NavBarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +36,6 @@ const NavBarComponent = () => {
     <div>
       <Navbar color="dark" dark>
         <NavbarBrand href="/">Bob's BurgerTown</NavbarBrand>
-        <SearchCategories rootEndpoint={rootEndpoint} headers={headers} />
 
         <NavbarToggler onClick={isToggle} />
 
