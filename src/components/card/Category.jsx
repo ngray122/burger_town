@@ -37,9 +37,9 @@ const Category = () => {
     let items = headers.map(({ id, image, name, episode, season, price }) => {
       return (
         <>
-          <Col>
+          <Col key={id}>
             <OneCard>
-              <CardBody key={id}>
+              <CardBody>
                 <CardImg image={image} />
                 <CardTitle name={name} />
                 <CardSubtitle season={season} episode={episode} />
@@ -59,9 +59,8 @@ const Category = () => {
       <Container>
         <h1>{header}</h1>
         <SearchBar header={header} headers={headers} />
-        <OneCard>
-          <SearchCard />
-        </OneCard>
+
+        <SearchCard headers={headers} />
 
         <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}

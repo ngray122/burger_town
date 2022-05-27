@@ -1,17 +1,16 @@
 import React from "react";
 import OneCard from "../card/OneCard";
 const SearchCard = ({ headers }) => {
-  console.log(headers);
+  console.log("headers in SearchCard ->", headers);
 
   // console.log(typeof searchEndpoint);
 
   return (
     <div>
-      <h1>Search Result</h1>
-      {/* {" "}
-      {searchEndpoint.map((item) => (
-        <OneCard>{item}</OneCard>
-      ))} */}
+      <h1>Search Result</h1>{" "}
+      {headers.map((header) => (
+        <OneCard>{header.name}</OneCard>
+      ))}
     </div>
   );
 };
