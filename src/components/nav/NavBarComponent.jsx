@@ -37,7 +37,8 @@ const NavBarComponent = () => {
     <div>
       <Navbar color="dark" dark>
         <NavbarBrand href="/">Bob's BurgerTown</NavbarBrand>
-        <SearchCategories />
+        <SearchCategories rootEndpoint={rootEndpoint} headers={headers} />
+
         <NavbarToggler onClick={isToggle} />
 
         <Collapse isOpen={isOpen} navbar>
