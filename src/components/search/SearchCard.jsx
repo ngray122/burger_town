@@ -8,8 +8,8 @@ const SearchCard = ({ headers }) => {
   return (
     <div>
       <h1>Search Result</h1>{" "}
-      {headers.map((header) => (
-        <OneCard>{header.name}</OneCard>
+      {headers.map((header, id) => (
+        <OneCard key={id}>{header.name}</OneCard>
       ))}
     </div>
   );

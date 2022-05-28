@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Input } from "reactstrap";
+import { Input, Form } from "reactstrap";
 import axios from "axios";
 import { useParams } from "react-router";
 
@@ -30,14 +30,16 @@ const SearchBar = ({ headers }) => {
   //   }
   return (
     <div>
-      <Input
-        placeholder="Search..."
-        type="text"
-        onChange={(e) => {
-          setSearchInput(e.target.value);
-        }}
-        value={searchInput}
-      ></Input>
+      <Form>
+        <Input
+          placeholder={`Search ${header}...`}
+          type="text"
+          onChange={(e) => {
+            setSearchInput(e.target.value);
+          }}
+          value={searchInput}
+        ></Input>
+      </Form>
       {/* {console.log("searchInput", searchInput)} */}
     </div>
   );
