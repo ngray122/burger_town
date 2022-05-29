@@ -1,7 +1,7 @@
 import React from "react";
 import OneCard from "../card/OneCard";
 const SearchCard = ({ headers }) => {
-  console.log("headers in SearchCard ->", headers);
+  // console.log("headers in SearchCard ->", headers);
 
   // console.log(typeof searchEndpoint);
 

@@ -17,6 +17,7 @@ const Category = () => {
   const columnsPerRow = 4;
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
+  const [query, setQuery] = useState("");
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -58,7 +59,11 @@ const Category = () => {
     <>
       <Container>
         <h1>{header}</h1>
-        <SearchBar header={header} headers={headers} />
+        <SearchBar
+          header={header}
+          headers={headers}
+          getQuery={(q) => setQuery(q)}
+        />
 
         <SearchCard headers={headers} />
 
