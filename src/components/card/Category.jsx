@@ -61,7 +61,7 @@ const Category = () => {
         <h1>{header}</h1>
         <SearchBar header={header} />
 
-        <SearchCard query={query} />
+        <SearchCard />
 
         <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}

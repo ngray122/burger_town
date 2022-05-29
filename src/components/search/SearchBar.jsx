@@ -4,10 +4,11 @@ import axios from "axios";
 import { useParams } from "react-router";
 import { Navigate } from "react-router-dom";
 import SearchCard from "./SearchCard";
+import OneCard from "../card/OneCard";
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState("");
-  const [query, setQuery] = useState([]);
+  const [query, setQuery] = useState("");
   const [searchEndpoint, setSearchEndpoint] = useState("");
 
   const { header } = useParams();
@@ -28,14 +29,13 @@ const SearchBar = () => {
     if (
       searchInput.length > 0 &&
       searchEndpoint.filter((item) => {
-        // console.log("item.name ", item.name);
         if (item.name.match(searchInput)) {
           setQuery(item.name);
         }
       })
     )
-      // Respose is Capitalize. Linda Belcher will not match linda belcher
-      // return query.charAt(0).toUpperCase() + query.slice(1);
+      // Respose is Capitalized. Linda Belcher will not match linda belcher
+      //  query.charAt(0).toUpperCase() + query.slice(1);
       return query;
   };
   console.log("query -> ", query);
@@ -51,6 +51,8 @@ const SearchBar = () => {
         ></Input>
         <Button type="submit">Submit</Button>
       </Form>
+      <h1>Query in Search Bar {query}</h1>
+      <OneCard>{query}</OneCard>
     </div>
   );
 };
