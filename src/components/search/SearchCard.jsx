@@ -1,16 +1,13 @@
 import React from "react";
-import OneCard from "../card/OneCard";
-const SearchCard = ({ headers }) => {
+import SearchBar from "./SearchBar";
+const SearchCard = ({ query }) => {
   // console.log("headers in SearchCard ->", headers);
 
   // console.log(typeof searchEndpoint);
-
+  console.log("query", query);
   return (
     <div>
-      <h1>Search Result</h1>{" "}
-      {headers.map((header, id) => (
-        <OneCard key={id}>{header.name}</OneCard>
-      ))}
+      <h1>{query}</h1>
     </div>
   );
 };

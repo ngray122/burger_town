@@ -59,13 +59,9 @@ const Category = () => {
     <>
       <Container>
         <h1>{header}</h1>
-        <SearchBar
-          header={header}
-          headers={headers}
-          getQuery={(q) => setQuery(q)}
-        />
+        <SearchBar header={header} />
 
-        <SearchCard headers={headers} />
+        <SearchCard query={query} />
 
         <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}
