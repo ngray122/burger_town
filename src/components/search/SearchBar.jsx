@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Input, Form, Button } from "reactstrap";
 import axios from "axios";
 import { useParams } from "react-router";
-import { Navigate } from "react-router-dom";
-import SearchCard from "./SearchCard";
 import OneCard from "../card/OneCard";
 
 const SearchBar = () => {
@@ -34,9 +32,9 @@ const SearchBar = () => {
         }
       })
     )
-      // Respose is Capitalized. Linda Belcher will not match linda belcher
+      // Response is Capitalized. "Linda Belcher" will not match "linda belcher"
       //  query.charAt(0).toUpperCase() + query.slice(1);
-      return query;
+      return <OneCard></OneCard>;
   };
   console.log("query -> ", query);
 

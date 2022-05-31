@@ -17,15 +17,14 @@ const Category = () => {
   const columnsPerRow = 4;
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
-  const [query, setQuery] = useState("");
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     axios
       .get(`https://bobsburgers-api.herokuapp.com/${header}/`)
-      .then((response) => {
-        setCategoryList(response.data);
+      .then((res) => {
+        setCategoryList(res.data);
       })
       .catch((err) => {
         console.log("error!! ====> ", err);
@@ -59,7 +58,7 @@ const Category = () => {
     <>
       <Container>
         <h1>{header}</h1>
-        <SearchBar header={header} />
+        <SearchBar />
 
         <SearchCard />
 
