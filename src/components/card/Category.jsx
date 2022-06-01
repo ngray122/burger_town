@@ -8,9 +8,8 @@ import CardTitle from "./CardTitle";
 import CardSubtitle from "./CardSubtitle";
 import ItemPagination from "./ItemPagination";
 import SearchBar from "../search/SearchBar";
-import SearchCard from "../search/SearchCard";
 
-const Category = () => {
+const Category = ({ query }) => {
   const [categoryList, setCategoryList] = useState({});
   const headers = Object.values(categoryList);
   const { header } = useParams();
@@ -34,6 +33,7 @@ const Category = () => {
   const indexOfFirstPost = indexOfLastPost - itemsPerPage;
 
   const getColumnsForRow = () => {
+    console.log("qury in category", query);
     let items = headers.map(({ id, image, name, episode, season, price }) => {
       return (
         <>
@@ -58,9 +58,7 @@ const Category = () => {
     <>
       <Container>
         <h1>{header}</h1>
-        <SearchBar />
-
-        <SearchCard />
+        <SearchBar headers={headers} getColumnsForRow={getColumnsForRow} />
 
         <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}
