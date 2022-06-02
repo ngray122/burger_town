@@ -48,6 +48,7 @@ const SearchBar = ({ headers, getColumnsForRow }) => {
         return setQueryResult(item);
       }
     });
+    setSearchInput("");
   };
   return (
     <div>
