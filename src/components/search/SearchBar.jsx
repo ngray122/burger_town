@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Input, Form, Button } from "reactstrap";
 import axios from "axios";
 import { useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
 import OneCard from "../card/OneCard";
 
-const SearchBar = ({ headers, getColumnsForRow }) => {
+const SearchBar = ({ headers }) => {
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
   const [queryResult, setQueryResult] = useState("");
   const [searchEndpoint, setSearchEndpoint] = useState("");
   const { header } = useParams();
+  const navigate = useNavigate();
 
   let name = headers.map(({ name }) => {
     return name;
@@ -49,6 +51,7 @@ const SearchBar = ({ headers, getColumnsForRow }) => {
       }
     });
     setSearchInput("");
+    // navigate("/search");
   };
   return (
     <div>
