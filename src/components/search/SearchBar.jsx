@@ -7,12 +7,12 @@ import OneCard from "../card/OneCard";
 const SearchBar = ({ headers, getColumnsForRow }) => {
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
+  const [queryResult, setQueryResult] = useState("");
   const [searchEndpoint, setSearchEndpoint] = useState("");
-
   const { header } = useParams();
+
   let name = headers.map(({ name }) => {
-    console.log(name);
-    return { name };
+    return name;
   });
   useEffect(() => {
     axios
@@ -37,25 +37,21 @@ const SearchBar = ({ headers, getColumnsForRow }) => {
       })
     )
       // Response is Capitalized. "Linda Belcher" will not match "linda belcher"
-      //  query.charAt(
-      return query === name ? (
-        <OneCard>Card return {name}</OneCard>
-      ) : (
-        "no match found"
-      );
+      return;
   };
 
-  //   let basketballPlayers = students.filter(function (student) {
-  //     return student.sports === "Basketball";
-  // }).map(function (student) {
-  //     return student.name;
-  // })
-
-  // console.log("query -> ", query);
-
+  const submitHandler = (e) => {
+    e.preventDefault();
+    name.find((item) => {
+      if (item.includes(query)) {
+        console.log("item in submit", item);
+        return setQueryResult(item);
+      }
+    });
+  };
   return (
     <div>
-      <Form>
+      <Form onSubmit={submitHandler}>
         <Input
           placeholder={`Search ${header}...`}
           type="text"
@@ -64,9 +60,7 @@ const SearchBar = ({ headers, getColumnsForRow }) => {
         ></Input>
         <Button type="submit">Submit</Button>
       </Form>
-      <h1>Query in Search Bar {query}</h1>
-      {query === name ? <OneCard></OneCard> : "No Match Found"}
-      {console.log("name in render", name)}
+      <OneCard>{queryResult}</OneCard>
     </div>
   );
 };

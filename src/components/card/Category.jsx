@@ -33,7 +33,7 @@ const Category = ({ query }) => {
   const indexOfFirstPost = indexOfLastPost - itemsPerPage;
 
   const getColumnsForRow = () => {
-    console.log("qury in category", query);
+    // console.log("qury in category", query);
     let items = headers.map(({ id, image, name, episode, season, price }) => {
       return (
         <>
