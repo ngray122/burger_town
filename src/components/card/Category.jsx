@@ -1,67 +1,32 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams } from "react-router";
-import { Row, Col, Container, CardBody } from "reactstrap";
-import OneCard from "./OneCard";
-import CardImg from "./CardImg";
-import CardTitle from "./CardTitle";
-import CardSubtitle from "./CardSubtitle";
+import React, { useContext } from "react";
+import { Row, Container } from "reactstrap";
 import ItemPagination from "./ItemPagination";
 import SearchBar from "../search/SearchBar";
+import { ApiContext } from "../context/ApiContext";
 
 const Category = ({ query }) => {
-  const [categoryList, setCategoryList] = useState({});
-  const headers = Object.values(categoryList);
-  const { header } = useParams();
   const columnsPerRow = 4;
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(20);
-
+  const {
+    setCurrentPage,
+    header,
+    headers,
+    getColumnsForRow,
+    itemsPerPage,
+    categoryList,
+    currentPage,
+  } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  useEffect(() => {
-    axios
-      .get(`https://bobsburgers-api.herokuapp.com/${header}/`)
-      .then((res) => {
-        setCategoryList(res.data);
-      })
-      .catch((err) => {
-        console.log("error!! ====> ", err);
-      });
-  }, [header]);
-  const indexOfLastPost = currentPage * itemsPerPage;
-  const indexOfFirstPost = indexOfLastPost - itemsPerPage;
-
-  const getColumnsForRow = () => {
-    // console.log("qury in category", query);
-    let items = headers.map(({ id, image, name, episode, season, price }) => {
-      return (
-        <>
-          <Col key={id}>
-            <OneCard>
-              <CardBody>
-                <CardImg image={image} />
-                <CardTitle name={name} />
-                <CardSubtitle season={season} episode={episode} />
-                <CardSubtitle price={price} />
-              </CardBody>
-            </OneCard>
-          </Col>
-        </>
-      );
-    });
-
-    return items.slice(indexOfFirstPost, indexOfLastPost);
-  };
-
+  console.log("actegory list", categoryList);
+  console.log("header", header);
+  console.log("headers", headers);
   return (
     <>
       <Container>
         <h1>{header}</h1>
-        <SearchBar headers={headers} getColumnsForRow={getColumnsForRow} />
+        <SearchBar headers={headers} />
 
         <Row xs={1} md={columnsPerRow}>
-          {getColumnsForRow()}
+          {getColumnsForRow}
         </Row>
         <ItemPagination
           itemsPerPage={itemsPerPage}
