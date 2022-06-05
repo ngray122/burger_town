@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import { ApiContext } from "../../App";
@@ -10,7 +10,6 @@ export default function ApiProvider({ children }) {
   const values = Object.values(allHeaders);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
-  //   console.log("values ", values);
   const [path, setPath] = useState("");
   useEffect(() => {
     const getResponse = () => {
@@ -38,8 +37,7 @@ export default function ApiProvider({ children }) {
     };
     if (path) getSingleResponse();
   }, [path]);
-  //   console.log("headers on Context", headers);
-  console.log("singleHeader in aContext", singleHeader);
+  //   console.log("singleHeader in aContext", singleHeader);
 
   return (
     <ApiContext.Provider

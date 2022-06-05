@@ -23,13 +23,12 @@ const Category = ({ query }) => {
     singleHeader,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log("allHeaders in cateogry", allHeaders);
+  // console.log("allHeaders in cateogry", allHeaders);
   useEffect(() => {
     headers.map((header) => {
       setPath(header);
     });
-  });
-  console.log(path);
+  }, []);
 
   const getColumnsForRow = () => {
     let items = singleHeader.map(
@@ -62,7 +61,7 @@ const Category = ({ query }) => {
         <SearchBar />
 
         <Row xs={1} md={columnsPerRow}>
-          {getColumnsForRow}
+          {getColumnsForRow()}
         </Row>
         <ItemPagination
           itemsPerPage={itemsPerPage}
