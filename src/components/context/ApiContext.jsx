@@ -1,32 +1,33 @@
 import React, { useState, useEffect } from "react";
 import OneCard from "../card/OneCard";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import CardImg from "../card/CardImg";
 import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
 import { Col, CardBody } from "reactstrap";
-import { useContext } from "react";
 export const ApiContext = React.createContext();
 
-// export const useApiContext = () => useContext(ApiContext);
 export default function ApiProvider({ children }) {
   const { header, setHeader } = useState("ApiContext");
-  const [categoryList, setCategoryList] = useState({});
-  const headers = Object.values(categoryList);
+  const [allCategories, setAllCategories] = useState({});
+  const headers = Object.values(allCategories);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
 
   useEffect(() => {
-    axios
-      .get(`https://bobsburgers-api.herokuapp.com/${header}/`)
-      .then((res) => {
-        setCategoryList(res.data);
-      })
-      .catch((err) => {
-        console.log("error!! ====> ", err);
-      });
-  }, [header]);
+    const getResponse = () => {
+      axios
+        .get(`https://bobsburgers-api.herokuapp.com/`)
+        .then((res) => {
+          setAllCategories(res.data);
+          console.log("categories in aContext", allCategories);
+        })
+        .catch((err) => {
+          console.log("error!! ====> ", err);
+        });
+    };
+    getResponse();
+  }, []);
 
   const getColumnsForRow = () => {
     // console.log("qury in category", query);
@@ -58,11 +59,12 @@ export default function ApiProvider({ children }) {
     <ApiContext.Provider
       value={{
         setCurrentPage,
+        setHeader,
         header,
         headers,
         getColumnsForRow,
         itemsPerPage,
-        categoryList,
+        allCategories,
         currentPage,
       }}
     >
