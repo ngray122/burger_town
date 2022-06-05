@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -9,28 +9,15 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
 } from "reactstrap";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import { ApiContext } from "../../App";
 
 const NavBarComponent = () => {
+  const { headers } = useContext(ApiContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [rootEndpoint, setRootEndpoint] = useState({});
-  const headers = Object.keys(rootEndpoint);
-
   const isToggle = (e) => {
     setIsOpen(!isOpen);
   };
-
-  useEffect(() => {
-    axios
-      .get(`https://bobsburgers-api.herokuapp.com/`)
-      .then((res) => {
-        setRootEndpoint(res.data);
-      })
-      .catch((err) => {
-        console.log("error!! ====> ", err);
-      });
-  }, []);
 
   return (
     <div>
