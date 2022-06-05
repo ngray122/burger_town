@@ -1,32 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Input, Form, Button } from "reactstrap";
 import axios from "axios";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import OneCard from "../card/OneCard";
-import { ApiContext } from "../context/ApiContext";
+import { ApiContext } from "../../App";
 
 const SearchBar = ({ headers }) => {
+  const {
+    setCurrentPage,
+    singleHeader,
+    allHeaders,
+    getColumnsForRow,
+    itemsPerPage,
+    currentPage,
+  } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
   const [queryResult, setQueryResult] = useState("");
   const [searchEndpoint, setSearchEndpoint] = useState("");
-  const { header } = useParams();
-  const navigate = useNavigate();
-
-  let name = headers.map(({ name }) => {
+  // console.log("all headers in searchBar", allHeaders);
+  let name = singleHeader.map(({ name }) => {
+    console.log("name", name);
     return name;
   });
-  useEffect(() => {
-    axios
-      .get(`https://bobsburgers-api.herokuapp.com/${header}`)
-      .then((res) => {
-        setSearchEndpoint(res.data);
-      })
-      .catch((err) => {
-        console.log("error!! ====> ", err);
-      });
-  }, [searchInput, header]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://bobsburgers-api.herokuapp.com/${header}`)
+  //     .then((res) => {
+  //       setSearchEndpoint(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log("error!! ====> ", err);
+  //     });
+  // }, [searchInput, header]);
 
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
@@ -58,7 +65,7 @@ const SearchBar = ({ headers }) => {
     <div>
       <Form onSubmit={submitHandler}>
         <Input
-          placeholder={`Search ${header}...`}
+          placeholder={`Search ${singleHeader}...`}
           type="text"
           onChange={(e) => handleSearch(e)}
           value={searchInput}

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Row, Container } from "reactstrap";
 import ItemPagination from "./ItemPagination";
 import SearchBar from "../search/SearchBar";
-import { ApiContext } from "../context/ApiContext";
+import { ApiContext } from "../../App";
 
 const Category = ({ query }) => {
   const columnsPerRow = 4;
@@ -13,16 +13,21 @@ const Category = ({ query }) => {
     getColumnsForRow,
     itemsPerPage,
     currentPage,
+    headers,
+    setPath,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log("actegory list in category", allHeaders);
-  console.log("header in category", singleHeader);
-  console.log("headers in category", allHeaders);
+  console.log("headers list in category", headers);
+  // console.log("header in category", singleHeader);
+  // console.log("headers in category", allHeaders);
   return (
     <>
       <Container>
+        {headers.map((header, i) => {
+          return <h1>{header}</h1>;
+        })}
         <h1>{singleHeader}</h1>
-        <SearchBar allHeaders={allHeaders} />
+        <SearchBar />
 
         <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow}

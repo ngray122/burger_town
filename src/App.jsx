@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
 import Landing from "./components/landing/Landing";
 import NavBarComponent from "./components/nav/NavBarComponent";
@@ -9,15 +9,18 @@ import SearchCard from "./components/search/SearchCard";
 import ApiProvider from "./components/context/ApiContext";
 import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
-
+export const ApiContext = React.createContext("");
 function App() {
-  // const { header } = useParams({});
-  // const [header, setHeader] = useState({});
+  // const { singleHeader } = useParams({});
+  const [singleHeader, setSingleHeader] = useState([]);
+  const [allHeaders, setAllHeaders] = useState([]);
   return (
     <div className="App">
       <>
         <BrowserRouter>
-          <ApiProvider>
+          <ApiProvider
+            value={(singleHeader, setSingleHeader, allHeaders, setAllHeaders)}
+          >
             <NavBarComponent />
 
             <Routes>

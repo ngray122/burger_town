@@ -1,26 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import OneCard from "../card/OneCard";
 import axios from "axios";
 import CardImg from "../card/CardImg";
 import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
 import { Col, CardBody } from "reactstrap";
-export const ApiContext = React.createContext();
+import { ApiContext } from "../../App";
 
 export default function ApiProvider({ children }) {
   const [singleHeader, setSingleHeader] = useState([]);
   const [allHeaders, setAllHeaders] = useState([]);
-  const headers = Object.values(allHeaders);
+  const headers = Object.keys(allHeaders);
+  const values = Object.values(allHeaders);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
-
+  console.log("values ", values);
+  const [path, setPath] = useState("");
   useEffect(() => {
     const getResponse = () => {
       axios
         .get(`https://bobsburgers-api.herokuapp.com/`)
         .then((res) => {
           setAllHeaders(res.data);
-          console.log("allHeaders in aContext", allHeaders);
         })
         .catch((err) => {
           console.log("error!! ====> ", err);
@@ -28,22 +29,22 @@ export default function ApiProvider({ children }) {
     };
     getResponse();
   }, []);
-
-  useEffect(() => {
-    const getSingleResponse = () => {
-      axios
-        .get(`https://bobsburgers-api.herokuapp.com/${singleHeader}`)
-        .then((res) => {
-          setSingleHeader(res.data);
-          console.log("singleHeader in aContext", singleHeader);
-        })
-        .catch((err) => {
-          console.log("error!! ====> ", err);
-        });
-    };
-    if (singleHeader) getSingleResponse();
-  }, [singleHeader]);
-
+  console.log("allHeaders in aContext", allHeaders);
+  //   useEffect(() => {
+  //     const getSingleResponse = () => {
+  //       axios
+  //         .get(`https://bobsburgers-api.herokuapp.com/${singleHeader}/`)
+  //         .then((res) => {
+  //           setSingleHeader(res.data);
+  //         })
+  //         .catch((err) => {
+  //           console.log("error!! ====> ", err);
+  //         });
+  //     };
+  //     if (headers) getSingleResponse();
+  //   }, [headers]);
+  //   console.log("headers on Context", headers);
+  //   console.log("singleHeader in aContext", singleHeader);
   const getColumnsForRow = () => {
     // console.log("qury in category", query);
     let items = allHeaders.map(
@@ -69,12 +70,11 @@ export default function ApiProvider({ children }) {
   };
   const indexOfLastPost = currentPage * itemsPerPage;
   const indexOfFirstPost = indexOfLastPost - itemsPerPage;
-  {
-    console.log("singleHeader in context", singleHeader);
-  }
+
   return (
     <ApiContext.Provider
       value={{
+        setPath,
         setCurrentPage,
         setAllHeaders,
         setSingleHeader,
@@ -83,6 +83,7 @@ export default function ApiProvider({ children }) {
         getColumnsForRow,
         itemsPerPage,
         currentPage,
+        headers,
       }}
     >
       {children}

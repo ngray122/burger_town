@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Pagination, PaginationLink, PaginationItem } from "reactstrap";
-import { ApiContext } from "../context/ApiContext";
+import { ApiContext } from "../../App";
+
 const ItemPagination = ({ totalItems, paginate }) => {
   const pageNumbers = [];
   const { setCurrentPage, itemsPerPage, currentPage } = useContext(ApiContext);
