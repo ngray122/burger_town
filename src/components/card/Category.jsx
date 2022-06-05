@@ -12,11 +12,11 @@ const Category = ({ query }) => {
     headers,
     getColumnsForRow,
     itemsPerPage,
-    categoryList,
+    allCategories,
     currentPage,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log("actegory list in category", categoryList);
+  console.log("actegory list in category", allCategories);
   console.log("header in category", header);
   console.log("headers in category", headers);
   return (
@@ -30,7 +30,7 @@ const Category = ({ query }) => {
         </Row>
         <ItemPagination
           itemsPerPage={itemsPerPage}
-          totalItems={categoryList.length}
+          totalItems={allCategories.length}
           paginate={paginate}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
