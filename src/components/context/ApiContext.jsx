@@ -14,7 +14,7 @@ export default function ApiProvider({ children }) {
   const values = Object.values(allHeaders);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
-  console.log("values ", values);
+  //   console.log("values ", values);
   const [path, setPath] = useState("");
   useEffect(() => {
     const getResponse = () => {
@@ -30,21 +30,21 @@ export default function ApiProvider({ children }) {
     getResponse();
   }, []);
   console.log("allHeaders in aContext", allHeaders);
-  //   useEffect(() => {
-  //     const getSingleResponse = () => {
-  //       axios
-  //         .get(`https://bobsburgers-api.herokuapp.com/${singleHeader}/`)
-  //         .then((res) => {
-  //           setSingleHeader(res.data);
-  //         })
-  //         .catch((err) => {
-  //           console.log("error!! ====> ", err);
-  //         });
-  //     };
-  //     if (headers) getSingleResponse();
-  //   }, [headers]);
-  //   console.log("headers on Context", headers);
-  //   console.log("singleHeader in aContext", singleHeader);
+  useEffect(() => {
+    const getSingleResponse = () => {
+      axios
+        .get(`https://bobsburgers-api.herokuapp.com/${path}`)
+        .then((res) => {
+          setSingleHeader(res.data);
+        })
+        .catch((err) => {
+          console.log("error!! ====> ", err);
+        });
+    };
+    if (path) getSingleResponse();
+  }, [path]);
+  console.log("headers on Context", headers);
+  console.log("singleHeader in aContext", singleHeader);
   const getColumnsForRow = () => {
     // console.log("qury in category", query);
     let items = allHeaders.map(

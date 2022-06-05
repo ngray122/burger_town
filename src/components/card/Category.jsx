@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Row, Container } from "reactstrap";
 import ItemPagination from "./ItemPagination";
 import SearchBar from "../search/SearchBar";
@@ -17,16 +17,18 @@ const Category = ({ query }) => {
     setPath,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log("headers list in category", headers);
-  // console.log("header in category", singleHeader);
-  // console.log("headers in category", allHeaders);
+  console.log("allHeaders in cateogry", allHeaders);
+  useEffect(() => {
+    headers.map((header) => {
+      setPath(header);
+    });
+  });
   return (
     <>
       <Container>
         {headers.map((header, i) => {
           return <h1>{header}</h1>;
         })}
-        <h1>{singleHeader}</h1>
         <SearchBar />
 
         <Row xs={1} md={columnsPerRow}>
