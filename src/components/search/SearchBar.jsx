@@ -21,7 +21,7 @@ const SearchBar = ({ headers }) => {
   const [searchEndpoint, setSearchEndpoint] = useState("");
   // console.log("all headers in searchBar", allHeaders);
   let name = singleHeader.map(({ name }) => {
-    console.log("name", name);
+    // console.log("name", name);
     return name;
   });
   // useEffect(() => {

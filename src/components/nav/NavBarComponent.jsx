@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { ApiContext } from "../../App";
 
 const NavBarComponent = () => {
-  const { headers } = useContext(ApiContext);
+  const { headers, setPath } = useContext(ApiContext);
   const [isOpen, setIsOpen] = useState(false);
   const isToggle = (e) => {
     setIsOpen(!isOpen);
@@ -32,7 +32,12 @@ const NavBarComponent = () => {
             <UncontrolledDropdown nav>
               {headers.map((header, i) => (
                 <DropdownToggle key={i} nav>
-                  <Link to={`/categories/${header}`}>{header}</Link>
+                  <Link
+                    onClick={() => setPath(header)}
+                    to={`/categories/${header}`}
+                  >
+                    {header}
+                  </Link>
                 </DropdownToggle>
               ))}
             </UncontrolledDropdown>

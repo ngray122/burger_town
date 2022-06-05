@@ -1,20 +1,26 @@
 import React, { useContext, useEffect } from "react";
 import { Row, Container } from "reactstrap";
 import ItemPagination from "./ItemPagination";
+import OneCard from "../card/OneCard";
+
 import SearchBar from "../search/SearchBar";
 import { ApiContext } from "../../App";
+import CardImg from "../card/CardImg";
+import CardTitle from "../card/CardTitle";
+import CardSubtitle from "../card/CardSubtitle";
+import { Col, CardBody } from "reactstrap";
+const columnsPerRow = 4;
 
 const Category = ({ query }) => {
-  const columnsPerRow = 4;
   const {
     setCurrentPage,
-    singleHeader,
     allHeaders,
-    getColumnsForRow,
     itemsPerPage,
     currentPage,
     headers,
     setPath,
+    path,
+    singleHeader,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   console.log("allHeaders in cateogry", allHeaders);
@@ -23,12 +29,36 @@ const Category = ({ query }) => {
       setPath(header);
     });
   });
+  console.log(path);
+
+  const getColumnsForRow = () => {
+    let items = singleHeader.map(
+      ({ id, image, name, episode, season, price }) => {
+        return (
+          <>
+            <Col key={id}>
+              <OneCard>
+                <CardBody>
+                  <CardImg image={image} />
+                  <CardTitle name={name} />
+                  <CardSubtitle season={season} episode={episode} />
+                  <CardSubtitle price={price} />
+                </CardBody>
+              </OneCard>
+            </Col>
+          </>
+        );
+      }
+    );
+
+    return items.slice(indexOfFirstPost, indexOfLastPost);
+  };
+  const indexOfLastPost = currentPage * itemsPerPage;
+  const indexOfFirstPost = indexOfLastPost - itemsPerPage;
+
   return (
     <>
       <Container>
-        {headers.map((header, i) => {
-          return <h1>{header}</h1>;
-        })}
         <SearchBar />
 
         <Row xs={1} md={columnsPerRow}>

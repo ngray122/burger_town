@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import OneCard from "../card/OneCard";
 import axios from "axios";
-import CardImg from "../card/CardImg";
-import CardTitle from "../card/CardTitle";
-import CardSubtitle from "../card/CardSubtitle";
-import { Col, CardBody } from "reactstrap";
+
 import { ApiContext } from "../../App";
 
 export default function ApiProvider({ children }) {
@@ -29,7 +25,6 @@ export default function ApiProvider({ children }) {
     };
     getResponse();
   }, []);
-  console.log("allHeaders in aContext", allHeaders);
   useEffect(() => {
     const getSingleResponse = () => {
       axios
@@ -43,33 +38,8 @@ export default function ApiProvider({ children }) {
     };
     if (path) getSingleResponse();
   }, [path]);
-  console.log("headers on Context", headers);
+  //   console.log("headers on Context", headers);
   console.log("singleHeader in aContext", singleHeader);
-  const getColumnsForRow = () => {
-    // console.log("qury in category", query);
-    let items = allHeaders.map(
-      ({ id, image, name, episode, season, price }) => {
-        return (
-          <>
-            <Col key={id}>
-              <OneCard>
-                <CardBody>
-                  <CardImg image={image} />
-                  <CardTitle name={name} />
-                  <CardSubtitle season={season} episode={episode} />
-                  <CardSubtitle price={price} />
-                </CardBody>
-              </OneCard>
-            </Col>
-          </>
-        );
-      }
-    );
-
-    return items.slice(indexOfFirstPost, indexOfLastPost);
-  };
-  const indexOfLastPost = currentPage * itemsPerPage;
-  const indexOfFirstPost = indexOfLastPost - itemsPerPage;
 
   return (
     <ApiContext.Provider
@@ -80,7 +50,6 @@ export default function ApiProvider({ children }) {
         setSingleHeader,
         singleHeader,
         allHeaders,
-        getColumnsForRow,
         itemsPerPage,
         currentPage,
         headers,
