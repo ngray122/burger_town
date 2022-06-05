@@ -8,29 +8,28 @@ const Category = ({ query }) => {
   const columnsPerRow = 4;
   const {
     setCurrentPage,
-    header,
-    headers,
+    singleHeader,
+    allHeaders,
     getColumnsForRow,
     itemsPerPage,
-    allCategories,
     currentPage,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log("actegory list in category", allCategories);
-  console.log("header in category", header);
-  console.log("headers in category", headers);
+  console.log("actegory list in category", allHeaders);
+  console.log("header in category", singleHeader);
+  console.log("headers in category", allHeaders);
   return (
     <>
       <Container>
-        <h1>{header}</h1>
-        <SearchBar headers={headers} />
+        <h1>{singleHeader}</h1>
+        <SearchBar allHeaders={allHeaders} />
 
         <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow}
         </Row>
         <ItemPagination
           itemsPerPage={itemsPerPage}
-          totalItems={allCategories.length}
+          totalItems={allHeaders.length}
           paginate={paginate}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}

@@ -8,9 +8,9 @@ import { Col, CardBody } from "reactstrap";
 export const ApiContext = React.createContext();
 
 export default function ApiProvider({ children }) {
-  const { header, setHeader } = useState("ApiContext");
-  const [allCategories, setAllCategories] = useState({});
-  const headers = Object.values(allCategories);
+  const [singleHeader, setSingleHeader] = useState([]);
+  const [allHeaders, setAllHeaders] = useState([]);
+  const headers = Object.values(allHeaders);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
 
@@ -19,8 +19,8 @@ export default function ApiProvider({ children }) {
       axios
         .get(`https://bobsburgers-api.herokuapp.com/`)
         .then((res) => {
-          setAllCategories(res.data);
-          console.log("categories in aContext", allCategories);
+          setAllHeaders(res.data);
+          console.log("allHeaders in aContext", allHeaders);
         })
         .catch((err) => {
           console.log("error!! ====> ", err);
@@ -29,42 +29,59 @@ export default function ApiProvider({ children }) {
     getResponse();
   }, []);
 
+  useEffect(() => {
+    const getSingleResponse = () => {
+      axios
+        .get(`https://bobsburgers-api.herokuapp.com/${singleHeader}`)
+        .then((res) => {
+          setSingleHeader(res.data);
+          console.log("singleHeader in aContext", singleHeader);
+        })
+        .catch((err) => {
+          console.log("error!! ====> ", err);
+        });
+    };
+    if (singleHeader) getSingleResponse();
+  }, [singleHeader]);
+
   const getColumnsForRow = () => {
     // console.log("qury in category", query);
-    let items = headers.map(({ id, image, name, episode, season, price }) => {
-      return (
-        <>
-          <Col key={id}>
-            <OneCard>
-              <CardBody>
-                <CardImg image={image} />
-                <CardTitle name={name} />
-                <CardSubtitle season={season} episode={episode} />
-                <CardSubtitle price={price} />
-              </CardBody>
-            </OneCard>
-          </Col>
-        </>
-      );
-    });
+    let items = allHeaders.map(
+      ({ id, image, name, episode, season, price }) => {
+        return (
+          <>
+            <Col key={id}>
+              <OneCard>
+                <CardBody>
+                  <CardImg image={image} />
+                  <CardTitle name={name} />
+                  <CardSubtitle season={season} episode={episode} />
+                  <CardSubtitle price={price} />
+                </CardBody>
+              </OneCard>
+            </Col>
+          </>
+        );
+      }
+    );
 
     return items.slice(indexOfFirstPost, indexOfLastPost);
   };
   const indexOfLastPost = currentPage * itemsPerPage;
   const indexOfFirstPost = indexOfLastPost - itemsPerPage;
   {
-    console.log("header in context", header);
+    console.log("singleHeader in context", singleHeader);
   }
   return (
     <ApiContext.Provider
       value={{
         setCurrentPage,
-        setHeader,
-        header,
-        headers,
+        setAllHeaders,
+        setSingleHeader,
+        singleHeader,
+        allHeaders,
         getColumnsForRow,
         itemsPerPage,
-        allCategories,
         currentPage,
       }}
     >
