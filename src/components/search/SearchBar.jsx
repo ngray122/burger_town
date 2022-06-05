@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import OneCard from "../card/OneCard";
+import { ApiContext } from "../context/ApiContext";
 
 const SearchBar = ({ headers }) => {
   const [searchInput, setSearchInput] = useState("");

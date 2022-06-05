@@ -16,9 +16,9 @@ const Category = ({ query }) => {
     currentPage,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log("actegory list", categoryList);
-  console.log("header", header);
-  console.log("headers", headers);
+  console.log("actegory list in category", categoryList);
+  console.log("header in category", header);
+  console.log("headers in category", headers);
   return (
     <>
       <Container>

@@ -1,18 +1,19 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import OneCard from "../card/OneCard";
 import axios from "axios";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import CardImg from "../card/CardImg";
 import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
 import { Col, CardBody } from "reactstrap";
-const ApiContext = React.createContext("");
+import { useContext } from "react";
+export const ApiContext = React.createContext();
 
-// why does this export not work with an arrow function?
-const ApiProvider = ({ children }) => {
+// export const useApiContext = () => useContext(ApiContext);
+export default function ApiProvider({ children }) {
+  const { header, setHeader } = useState("ApiContext");
   const [categoryList, setCategoryList] = useState({});
   const headers = Object.values(categoryList);
-  const { header } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
 
@@ -50,6 +51,9 @@ const ApiProvider = ({ children }) => {
   };
   const indexOfLastPost = currentPage * itemsPerPage;
   const indexOfFirstPost = indexOfLastPost - itemsPerPage;
+  {
+    console.log("header in context", header);
+  }
   return (
     <ApiContext.Provider
       value={{
@@ -65,6 +69,4 @@ const ApiProvider = ({ children }) => {
       {children}
     </ApiContext.Provider>
   );
-};
-
-export { ApiContext, ApiProvider };
+}
