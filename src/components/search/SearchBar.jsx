@@ -27,12 +27,12 @@ const SearchBar = ({ headers }) => {
     return name;
   });
 
-  let singleName = name.map((item) => {
-    return item;
-  });
-  {
-    console.log("singleName", singleName);
-  }
+  const isNameMatching = () =>
+    name.find((queryResult) => {
+      console.log("query result", queryResult);
+      return true;
+    });
+
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
     if (
@@ -41,7 +41,7 @@ const SearchBar = ({ headers }) => {
         if (item.name.match(searchInput)) {
           setQuery(item.name);
         }
-        console.log("query", query);
+        // console.log("query", query);
         return query;
       })
     )
@@ -71,9 +71,9 @@ const SearchBar = ({ headers }) => {
         ></Input>
         <Button type="submit">Submit</Button>
       </Form>
-      {console.log("name", name)}
+      {/* {console.log("name", name)}
       {console.log("queryResult", queryResult)}
-      {console.log("singleHeader", singleHeader)}
+      {console.log("singleHeader", singleHeader)} */}
       {queryResult === name ? (
         singleHeader.map(({ id, image, name, episode, season, price }) => {
           <OneCard>
