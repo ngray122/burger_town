@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Input, Form, Button } from "reactstrap";
 import axios from "axios";
 import { useParams } from "react-router";
@@ -18,20 +18,35 @@ const SearchBar = ({ headers }) => {
     getColumnsForRow,
     itemsPerPage,
     currentPage,
+    path,
   } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
   const [queryResult, setQueryResult] = useState("");
+  const [headerName, setHeaderName] = useState("");
   let name = singleHeader.map(({ name }) => {
     // console.log("name in search", name);
     return name;
   });
 
-  const isNameMatching = () =>
-    name.find((queryResult) => {
-      console.log("query result", queryResult);
-      return true;
-    });
+  const getSingleResponse = () => {
+    axios
+      .get(`https://bobsburgers-api.herokuapp.com/${path}?name=${query}`)
+      .then((res) => {
+        setHeaderName(res.data);
+        console.log("header name", headerName);
+      })
+      .catch((err) => {
+        console.log("error!! ====> ", err);
+      });
+    if (path) getSingleResponse();
+  };
+
+  // const isNameMatching = () =>
+  //   name.find((queryResult) => {
+  //     console.log("query result", queryResult);
+  //     return true;
+  //   });
 
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
@@ -53,12 +68,14 @@ const SearchBar = ({ headers }) => {
     e.preventDefault();
     name.find((item) => {
       if (item.includes(query)) {
-        console.log("item in submit", item);
-        return setQueryResult(item);
+        // console.log("item in submit", item);
+        // console.log("query in submit", query);
+        getSingleResponse();
+        console.log(headerName);
+        return setQueryResult();
       }
     });
-    isNameMatching();
-
+    console.log("queryResult", queryResult);
     setSearchInput("");
   };
   return (

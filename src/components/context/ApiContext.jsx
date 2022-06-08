@@ -31,6 +31,7 @@ export default function ApiProvider({ children }) {
         .get(`https://bobsburgers-api.herokuapp.com/${path}`)
         .then((res) => {
           setSingleHeader(res.data);
+          //   console.log("single header in api call", singleHeader);
         })
         .catch((err) => {
           console.log("error!! ====> ", err);
