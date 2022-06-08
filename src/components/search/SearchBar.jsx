@@ -5,6 +5,10 @@ import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import OneCard from "../card/OneCard";
 import { ApiContext } from "../../App";
+import CardImg from "../card/CardImg";
+import CardTitle from "../card/CardTitle";
+import CardSubtitle from "../card/CardSubtitle";
+import { Col, CardBody } from "reactstrap";
 
 const SearchBar = ({ headers }) => {
   const {
@@ -18,31 +22,20 @@ const SearchBar = ({ headers }) => {
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
   const [queryResult, setQueryResult] = useState("");
-  const [searchEndpoint, setSearchEndpoint] = useState("");
-  // console.log("all headers in searchBar", allHeaders);
   let name = singleHeader.map(({ name }) => {
-    // console.log("name", name);
+    // console.log("name in search", name);
     return name;
   });
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://bobsburgers-api.herokuapp.com/${header}`)
-  //     .then((res) => {
-  //       setSearchEndpoint(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log("error!! ====> ", err);
-  //     });
-  // }, [searchInput, header]);
 
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
     if (
       searchInput.length > 0 &&
-      searchEndpoint.filter((item) => {
+      singleHeader.filter((item) => {
         if (item.name.match(searchInput)) {
           setQuery(item.name);
         }
+        console.log("query", query);
         return query;
       })
     )
@@ -58,21 +51,39 @@ const SearchBar = ({ headers }) => {
         return setQueryResult(item);
       }
     });
+
     setSearchInput("");
-    // navigate("/search");
   };
   return (
     <div>
       <Form onSubmit={submitHandler}>
         <Input
-          placeholder={`Search ${singleHeader}...`}
+          placeholder={`Search ...`}
           type="text"
           onChange={(e) => handleSearch(e)}
           value={searchInput}
         ></Input>
         <Button type="submit">Submit</Button>
       </Form>
-      <OneCard>{queryResult}</OneCard>
+      {console.log("name", name)}
+      {console.log("queryResult", queryResult)}
+      {console.log("singleHeader", singleHeader)}
+      {queryResult === name ? (
+        singleHeader.map(({ id, image, name, episode, season, price }) => {
+          <OneCard>
+            <CardBody>
+              <CardImg image={image} />
+              <CardTitle name={name} />
+              <CardSubtitle season={season} episode={episode} />
+              <CardSubtitle price={price} />
+            </CardBody>
+          </OneCard>;
+        })
+      ) : (
+        <OneCard>
+          <h1>not found</h1>
+        </OneCard>
+      )}
     </div>
   );
 };

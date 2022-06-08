@@ -9,9 +9,10 @@ import CardImg from "../card/CardImg";
 import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
 import { Col, CardBody } from "reactstrap";
-const columnsPerRow = 4;
 
-const Category = ({ query }) => {
+const Category = () => {
+  const columnsPerRow = 4;
+
   const {
     setCurrentPage,
     allHeaders,
@@ -19,17 +20,26 @@ const Category = ({ query }) => {
     currentPage,
     headers,
     setPath,
-    path,
+    setPathName,
     singleHeader,
+    path,
+    pathName,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  // console.log("allHeaders in cateogry", allHeaders);
   useEffect(() => {
     headers.map((header) => {
       setPath(header);
     });
-  }, []);
+  }, [path]);
 
+  useEffect(() => {
+    singleHeader.map(({ name }) => {
+      setPathName(name);
+    });
+  });
+  {
+    console.log(pathName);
+  }
   const getColumnsForRow = () => {
     let items = singleHeader.map(
       ({ id, image, name, episode, season, price }) => {

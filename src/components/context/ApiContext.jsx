@@ -11,6 +11,7 @@ export default function ApiProvider({ children }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
   const [path, setPath] = useState("");
+  const [pathName, setPathName] = useState("");
   useEffect(() => {
     const getResponse = () => {
       axios
@@ -43,6 +44,7 @@ export default function ApiProvider({ children }) {
     <ApiContext.Provider
       value={{
         setPath,
+        setPathName,
         setCurrentPage,
         setAllHeaders,
         setSingleHeader,
