@@ -57,6 +57,7 @@ const SearchBar = ({ headers }) => {
         return setQueryResult(item);
       }
     });
+    isNameMatching();
 
     setSearchInput("");
   };
