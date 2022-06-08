@@ -35,11 +35,10 @@ const Category = () => {
   useEffect(() => {
     singleHeader.map(({ name }) => {
       setPathName(name);
+      console.log(pathName);
     });
-  });
-  {
-    console.log(pathName);
-  }
+  }, [pathName]);
+
   const getColumnsForRow = () => {
     let items = singleHeader.map(
       ({ id, image, name, episode, season, price }) => {

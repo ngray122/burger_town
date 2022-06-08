@@ -27,6 +27,12 @@ const SearchBar = ({ headers }) => {
     return name;
   });
 
+  let singleName = name.map((item) => {
+    return item;
+  });
+  {
+    console.log("singleName", singleName);
+  }
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
     if (
