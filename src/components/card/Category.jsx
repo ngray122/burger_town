@@ -32,12 +32,12 @@ const Category = () => {
     });
   }, [path]);
 
-  useEffect(() => {
-    singleHeader.map(({ name }) => {
-      setPathName(name);
-      console.log(pathName);
-    });
-  }, [pathName]);
+  // useEffect(() => {
+  //   singleHeader.map(({ name }) => {
+  //     setPathName(name);
+  //     console.log(pathName);
+  //   });
+  // }, [pathName]);
 
   const getColumnsForRow = () => {
     let items = singleHeader.map(

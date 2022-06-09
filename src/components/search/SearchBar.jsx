@@ -10,14 +10,16 @@ import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
 import { Col, CardBody } from "reactstrap";
 
-const SearchBar = ({ headers }) => {
+const SearchBar = () => {
   const {
+    headers,
     setCurrentPage,
     singleHeader,
     allHeaders,
     getColumnsForRow,
     itemsPerPage,
     currentPage,
+    setPath,
     path,
   } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
@@ -28,6 +30,11 @@ const SearchBar = ({ headers }) => {
     // console.log("name in search", name);
     return name;
   });
+  useEffect(() => {
+    headers.map((header) => {
+      setPath(header);
+    });
+  }, [path]);
 
   const getSingleResponse = () => {
     axios
@@ -42,12 +49,6 @@ const SearchBar = ({ headers }) => {
     if (path) getSingleResponse();
   };
 
-  // const isNameMatching = () =>
-  //   name.find((queryResult) => {
-  //     console.log("query result", queryResult);
-  //     return true;
-  //   });
-
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
     if (
@@ -56,7 +57,6 @@ const SearchBar = ({ headers }) => {
         if (item.name.match(searchInput)) {
           setQuery(item.name);
         }
-        // console.log("query", query);
         return query;
       })
     )
@@ -68,10 +68,8 @@ const SearchBar = ({ headers }) => {
     e.preventDefault();
     name.find((item) => {
       if (item.includes(query)) {
-        // console.log("item in submit", item);
-        // console.log("query in submit", query);
         getSingleResponse();
-        console.log(headerName);
+        console.log("headerName", headerName);
         return setQueryResult();
       }
     });
