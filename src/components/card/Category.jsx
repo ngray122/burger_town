@@ -20,24 +20,15 @@ const Category = () => {
     currentPage,
     headers,
     setPath,
-    setPathName,
     singleHeader,
     path,
-    pathName,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  useEffect(() => {
-    headers.map((header) => {
-      setPath(header);
-    });
-  }, [path]);
-
   // useEffect(() => {
-  //   singleHeader.map(({ name }) => {
-  //     setPathName(name);
-  //     console.log(pathName);
+  //   headers.map((header) => {
+  //     setPath(header);
   //   });
-  // }, [pathName]);
+  // }, [path]);
 
   const getColumnsForRow = () => {
     let items = singleHeader.map(

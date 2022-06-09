@@ -15,26 +15,33 @@ const SearchBar = () => {
     headers,
     setCurrentPage,
     singleHeader,
+    setPath,
     allHeaders,
     getColumnsForRow,
     itemsPerPage,
     currentPage,
-    setPath,
     path,
   } = useContext(ApiContext);
+  // const { path } = useParams();
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
   const [queryResult, setQueryResult] = useState("");
   const [headerName, setHeaderName] = useState("");
+  // const [path, setPath] = useState("");
   let name = singleHeader.map(({ name }) => {
-    // console.log("name in search", name);
     return name;
   });
   useEffect(() => {
     headers.map((header) => {
       setPath(header);
     });
-  }, [path]);
+  }, []);
+
+  const handleSearch = (e) => {
+    setSearchInput(e.target.value);
+    return searchInput;
+  };
+  console.log("search input", searchInput);
 
   const getSingleResponse = () => {
     axios
@@ -46,34 +53,33 @@ const SearchBar = () => {
       .catch((err) => {
         console.log("error!! ====> ", err);
       });
+
     if (path) getSingleResponse();
   };
 
-  const handleSearch = (e) => {
-    setSearchInput(e.target.value);
-    if (
-      searchInput.length > 0 &&
-      singleHeader.filter((item) => {
-        if (item.name.match(searchInput)) {
-          setQuery(item.name);
-        }
-        return query;
-      })
-    )
-      // Response is Capitalized. "Linda Belcher" will not match "linda belcher"
-      return;
-  };
-
   const submitHandler = (e) => {
+    // if (item.name.match(searchInput)) {
+    //   setQuery(item.name);
+    // }
+    // if (
+    //   searchInput.length > 0 &&
+    //   singleHeader.filter((item) => {
+    //     setQuery(item);
+    //     console.log(query);
+
+    //     return query;
+    //   })
+    // )
     e.preventDefault();
     name.find((item) => {
       if (item.includes(query)) {
         getSingleResponse();
-        console.log("headerName", headerName);
+        // console.log("headerName", headerName);
         return setQueryResult();
       }
     });
-    console.log("queryResult", queryResult);
+    // console.log("queryResult", queryResult);
+    getSingleResponse();
     setSearchInput("");
   };
   return (
