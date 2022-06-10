@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CardImg from "../card/CardImg";
-import CardTitle from "../card/CardTitle";
-import CardSubtitle from "../card/CardSubtitle";
-import { Col, CardBody } from "reactstrap";
 
 import { ApiContext } from "../../App";
 
@@ -48,7 +44,7 @@ export default function ApiProvider({ children }) {
   let name = singleHeader.map(({ name }) => {
     return name;
   });
-
+  //   console.log("name in context", name);
   return (
     <ApiContext.Provider
       value={{

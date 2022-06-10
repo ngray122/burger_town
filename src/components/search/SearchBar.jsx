@@ -11,8 +11,7 @@ import CardSubtitle from "../card/CardSubtitle";
 import { Col, CardBody } from "reactstrap";
 
 const SearchBar = () => {
-  const { headers, setSingleHeader, singleHeader, name } =
-    useContext(ApiContext);
+  const { headers, singleHeader, name } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
   const [queryResult, setQueryResult] = useState("");
@@ -30,26 +29,14 @@ const SearchBar = () => {
     setSearchInput(e.target.value);
     return searchInput;
   };
+  // console.log("search input in SearchBar", searchInput);
 
-  useEffect(() => {
-    const getSingleResponse = () => {
-      axios
-        .get(`https://bobsburgers-api.herokuapp.com/${path}`)
-        .then((res) => {
-          setSingleHeader(res.data);
-          // console.log("single header in api call", singleHeader);
-        })
-        .catch((err) => {
-          console.log("error!! ====> ", err);
-        });
-    };
-    if (path) getSingleResponse();
-  }, [path]);
+  // console.log("singleHeader in SearchBar", singleHeader);
 
-  // let oneHeader = singleHeader.map(({ item }) => {
-  //   return item;
-  // });
-  // console.log("single item", oneHeader);
+  let oneHeader = singleHeader.map(({ item }) => {
+    return item;
+  });
+  console.log("single item", oneHeader);
   const submitHandler = (e) => {
     // if (item.name.match(searchInput)) {
     //   setQuery(item.name);
