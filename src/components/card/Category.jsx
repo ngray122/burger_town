@@ -29,7 +29,7 @@ const Category = () => {
       setPath(header);
     });
   }, [path]);
-  console.log("singleHeader in Category", singleHeader);
+  // console.log("singleHeader in Category", singleHeader);
   const getColumnsForRow = () => {
     let items = singleHeader.map(
       ({ id, image, name, episode, season, price }) => {

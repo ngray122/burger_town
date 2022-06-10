@@ -45,6 +45,10 @@ export default function ApiProvider({ children }) {
     if (path) getSingleResponse();
   }, [path]);
 
+  let name = singleHeader.map(({ name }) => {
+    return name;
+  });
+
   return (
     <ApiContext.Provider
       value={{
@@ -57,6 +61,7 @@ export default function ApiProvider({ children }) {
         itemsPerPage,
         currentPage,
         headers,
+        name,
       }}
     >
       {children}

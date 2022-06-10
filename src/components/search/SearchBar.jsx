@@ -11,15 +11,13 @@ import CardSubtitle from "../card/CardSubtitle";
 import { Col, CardBody } from "reactstrap";
 
 const SearchBar = () => {
-  const { headers, setSingleHeader, singleHeader } = useContext(ApiContext);
+  const { headers, setSingleHeader, singleHeader, name } =
+    useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
   const [queryResult, setQueryResult] = useState("");
   const [path, setPath] = useState("");
 
-  let name = singleHeader.map(({ name }) => {
-    return name;
-  });
   // useEffect(() => {
   //   headers.map((header) => {
   //     setPath(header);
