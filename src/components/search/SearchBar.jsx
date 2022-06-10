@@ -11,17 +11,8 @@ import CardSubtitle from "../card/CardSubtitle";
 import { Col, CardBody } from "reactstrap";
 
 const SearchBar = () => {
-  const {
-    headers,
-    setCurrentPage,
-    singleHeader,
-    setPath,
-    allHeaders,
-    getColumnsForRow,
-    itemsPerPage,
-    currentPage,
-    path,
-  } = useContext(ApiContext);
+  const { headers, setSingleHeader, singleHeader, setPath, path } =
+    useContext(ApiContext);
   // const { path } = useParams();
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
@@ -41,21 +32,24 @@ const SearchBar = () => {
     setSearchInput(e.target.value);
     return searchInput;
   };
-  console.log("search input", searchInput);
 
-  const getSingleResponse = () => {
-    axios
-      .get(`https://bobsburgers-api.herokuapp.com/${path}?name=${query}`)
-      .then((res) => {
-        setHeaderName(res.data);
-        console.log("header name", headerName);
-      })
-      .catch((err) => {
-        console.log("error!! ====> ", err);
-      });
-
+  useEffect(() => {
+    const getSingleResponse = () => {
+      axios
+        .get(`https://bobsburgers-api.herokuapp.com/${path}`)
+        .then((res) => {
+          setSingleHeader(res.data);
+          console.log("single header in api call", singleHeader);
+        })
+        .catch((err) => {
+          console.log("error!! ====> ", err);
+        });
+    };
     if (path) getSingleResponse();
-  };
+  }, [path]);
+  //   singleHeader.map(({ item }) => {
+  //     return setSingleItem(item);
+  //   });
 
   const submitHandler = (e) => {
     // if (item.name.match(searchInput)) {
@@ -73,13 +67,13 @@ const SearchBar = () => {
     e.preventDefault();
     name.find((item) => {
       if (item.includes(query)) {
-        getSingleResponse();
+        // getSingleResponse();
         // console.log("headerName", headerName);
         return setQueryResult();
       }
     });
     // console.log("queryResult", queryResult);
-    getSingleResponse();
+    // getSingleResponse();
     setSearchInput("");
   };
   return (
