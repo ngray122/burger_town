@@ -11,22 +11,24 @@ import CardSubtitle from "../card/CardSubtitle";
 import { Col, CardBody } from "reactstrap";
 
 const SearchBar = () => {
-  const { headers, setSingleHeader, singleHeader, setPath, path } =
-    useContext(ApiContext);
-  // const { path } = useParams();
+  const { headers, setSingleHeader, singleHeader } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
   const [queryResult, setQueryResult] = useState("");
   const [headerName, setHeaderName] = useState("");
-  // const [path, setPath] = useState("");
+  const [path, setPath] = useState("");
+  const [singleItem, setSingleItem] = useState("");
+
   let name = singleHeader.map(({ name }) => {
     return name;
   });
   useEffect(() => {
     headers.map((header) => {
       setPath(header);
+      // console.log(header);
     });
-  }, []);
+  }, [path]);
+  console.log("path", path);
 
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
@@ -39,7 +41,7 @@ const SearchBar = () => {
         .get(`https://bobsburgers-api.herokuapp.com/${path}`)
         .then((res) => {
           setSingleHeader(res.data);
-          console.log("single header in api call", singleHeader);
+          // console.log("single header in api call", singleHeader);
         })
         .catch((err) => {
           console.log("error!! ====> ", err);
@@ -47,10 +49,11 @@ const SearchBar = () => {
     };
     if (path) getSingleResponse();
   }, [path]);
-  //   singleHeader.map(({ item }) => {
-  //     return setSingleItem(item);
-  //   });
 
+  // let oneHeader = singleHeader.map(({ item }) => {
+  //   return item;
+  // });
+  // console.log("single item", oneHeader);
   const submitHandler = (e) => {
     // if (item.name.match(searchInput)) {
     //   setQuery(item.name);

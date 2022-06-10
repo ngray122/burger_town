@@ -15,7 +15,6 @@ export default function ApiProvider({ children }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
   const [path, setPath] = useState("");
-  const [singleItem, setSingleItem] = useState("");
   useEffect(() => {
     const getResponse = () => {
       axios
