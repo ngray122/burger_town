@@ -30,6 +30,21 @@ export default function ApiProvider({ children }) {
     getResponse();
   }, []);
 
+  useEffect(() => {
+    const getSingleResponse = () => {
+      axios
+        .get(`https://bobsburgers-api.herokuapp.com/${path}`)
+        .then((res) => {
+          setSingleHeader(res.data);
+          // console.log("single header in api call", singleHeader);
+        })
+        .catch((err) => {
+          console.log("error!! ====> ", err);
+        });
+    };
+    if (path) getSingleResponse();
+  }, [path]);
+
   return (
     <ApiContext.Provider
       value={{

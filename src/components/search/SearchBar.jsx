@@ -15,20 +15,18 @@ const SearchBar = () => {
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
   const [queryResult, setQueryResult] = useState("");
-  const [headerName, setHeaderName] = useState("");
   const [path, setPath] = useState("");
-  const [singleItem, setSingleItem] = useState("");
 
   let name = singleHeader.map(({ name }) => {
     return name;
   });
-  useEffect(() => {
-    headers.map((header) => {
-      setPath(header);
-      // console.log(header);
-    });
-  }, [path]);
-  console.log("path", path);
+  // useEffect(() => {
+  //   headers.map((header) => {
+  //     setPath(header);
+  //     // console.log(header);
+  //   });
+  // }, [path]);
+  // console.log("path in search", path);
 
   const handleSearch = (e) => {
     setSearchInput(e.target.value);

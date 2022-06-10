@@ -24,12 +24,12 @@ const Category = () => {
     path,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  // useEffect(() => {
-  //   headers.map((header) => {
-  //     setPath(header);
-  //   });
-  // }, [path]);
-
+  useEffect(() => {
+    headers.map((header) => {
+      setPath(header);
+    });
+  }, [path]);
+  console.log("singleHeader in Category", singleHeader);
   const getColumnsForRow = () => {
     let items = singleHeader.map(
       ({ id, image, name, episode, season, price }) => {
