@@ -8,55 +8,48 @@ import { ApiContext } from "../../App";
 import CardImg from "../card/CardImg";
 import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
-import { Col, CardBody } from "reactstrap";
+import { Row, CardBody } from "reactstrap";
 
 const SearchBar = () => {
-  const { headers, singleHeader, name } = useContext(ApiContext);
+  const { singleHeader, columnsPerRow } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
   const [queryResult, setQueryResult] = useState("");
   const [path, setPath] = useState("");
 
-  // useEffect(() => {
-  //   headers.map((header) => {
-  //     setPath(header);
-  //     // console.log(header);
-  //   });
-  // }, [path]);
-  // console.log("path in search", path);
-
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
     return searchInput;
   };
-  console.log("search input in SearchBar", searchInput);
 
-  // console.log("singleHeader in SearchBar", singleHeader);
+  const getQueryMatch = () => {};
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("submit clicked");
-    // if (
-    //   searchInput.length > 0 &&
-    //   singleHeader.filter((item) => {
-    //     setQuery(item.name);
-    //     console.log("query in searchbar", query);
-    //   })
-    // )
-    // if (item.name.match(searchInput)) {
-    //   setQuery(item.name);
-    // }
+    if (
+      searchInput.length > 0 &&
+      singleHeader
+        .filter((item) => {
+          if (item.name.toLowerCase().includes(searchInput.toLowerCase())) {
+            console.log("item in submithanler", item);
+            return item;
+          }
+        })
+        .map((item, index) => {
+          return (
+            <OneCard key={index}>
+              <CardBody>
+                <CardImg image={item.image} />
+                <CardTitle name={item.name} />
+                <CardSubtitle season={item.season} episode={item.episode} />
+                <CardSubtitle price={item.price} />
+              </CardBody>
+            </OneCard>
+          );
+        })
+    )
+      setSearchInput("");
 
-    // )
-    // name.find((item) => {
-    //   if (item.includes(query)) {
-    //
-    //     return setQueryResult();
-    //   }
-    // });
-    // console.log("queryResult", queryResult);
-    // getSingleResponse();
-    // setSearchInput("");
     return;
   };
   return (
@@ -70,25 +63,8 @@ const SearchBar = () => {
         ></Input>
         <Button type="submit">Submit</Button>
       </Form>
-      {/* {console.log("name", name)}
-      {console.log("queryResult", queryResult)}
-      {console.log("singleHeader", singleHeader)} */}
-      {queryResult === name ? (
-        singleHeader.map(({ id, image, name, episode, season, price }) => {
-          <OneCard>
-            <CardBody>
-              <CardImg image={image} />
-              <CardTitle name={name} />
-              <CardSubtitle season={season} episode={episode} />
-              <CardSubtitle price={price} />
-            </CardBody>
-          </OneCard>;
-        })
-      ) : (
-        <OneCard>
-          <h1>not found</h1>
-        </OneCard>
-      )}
+
+      <Row xs={1} md={columnsPerRow}></Row>
     </div>
   );
 };
