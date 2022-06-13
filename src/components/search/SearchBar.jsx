@@ -1,8 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Input, Form, Button } from "reactstrap";
-import axios from "axios";
-import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
 import OneCard from "../card/OneCard";
 import { ApiContext } from "../../App";
 import CardImg from "../card/CardImg";
@@ -13,9 +10,6 @@ import { Row, CardBody } from "reactstrap";
 const SearchBar = () => {
   const { singleHeader, columnsPerRow } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
-  const [query, setQuery] = useState("");
-  const [queryResult, setQueryResult] = useState("");
-  const [path, setPath] = useState("");
 
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
