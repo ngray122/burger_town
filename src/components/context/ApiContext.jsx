@@ -4,6 +4,8 @@ import axios from "axios";
 import { ApiContext } from "../../App";
 
 export default function ApiProvider({ children }) {
+  const columnsPerRow = 4;
+
   const [singleHeader, setSingleHeader] = useState([]);
   const [allHeaders, setAllHeaders] = useState([]);
   const headers = Object.keys(allHeaders);
@@ -58,6 +60,7 @@ export default function ApiProvider({ children }) {
         currentPage,
         headers,
         name,
+        columnsPerRow,
       }}
     >
       {children}

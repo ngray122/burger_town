@@ -11,8 +11,6 @@ import CardSubtitle from "../card/CardSubtitle";
 import { Col, CardBody } from "reactstrap";
 
 const Category = () => {
-  const columnsPerRow = 4;
-
   const {
     setCurrentPage,
     allHeaders,
@@ -22,6 +20,7 @@ const Category = () => {
     setPath,
     singleHeader,
     path,
+    columnsPerRow,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {

@@ -16,33 +16,34 @@ const SearchBar = () => {
     return searchInput;
   };
 
-  const getQueryMatch = () => {};
+  const getQueryMatch = () => {
+    let items = singleHeader
+      .filter((item) => {
+        if (item.name.toLowerCase().includes(searchInput.toLowerCase())) {
+          console.log("item in submithanler", item);
+          return item;
+        }
+      })
+      .map((item, index) => {
+        return (
+          <OneCard key={index}>
+            <CardBody>
+              <CardImg image={item.image} />
+              <CardTitle name={item.name} />
+              <CardSubtitle season={item.season} episode={item.episode} />
+              <CardSubtitle price={item.price} />
+            </CardBody>
+          </OneCard>
+        );
+      });
+
+    return items;
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (
-      searchInput.length > 0 &&
-      singleHeader
-        .filter((item) => {
-          if (item.name.toLowerCase().includes(searchInput.toLowerCase())) {
-            console.log("item in submithanler", item);
-            return item;
-          }
-        })
-        .map((item, index) => {
-          return (
-            <OneCard key={index}>
-              <CardBody>
-                <CardImg image={item.image} />
-                <CardTitle name={item.name} />
-                <CardSubtitle season={item.season} episode={item.episode} />
-                <CardSubtitle price={item.price} />
-              </CardBody>
-            </OneCard>
-          );
-        })
-    )
-      setSearchInput("");
+    getQueryMatch();
+    setSearchInput("");
 
     return;
   };
@@ -58,7 +59,9 @@ const SearchBar = () => {
         <Button type="submit">Submit</Button>
       </Form>
 
-      <Row xs={1} md={columnsPerRow}></Row>
+      <Row xs={1} md={columnsPerRow}>
+        {getQueryMatch()}
+      </Row>
     </div>
   );
 };
