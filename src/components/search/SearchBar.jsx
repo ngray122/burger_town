@@ -29,38 +29,35 @@ const SearchBar = () => {
     setSearchInput(e.target.value);
     return searchInput;
   };
-  // console.log("search input in SearchBar", searchInput);
+  console.log("search input in SearchBar", searchInput);
 
   // console.log("singleHeader in SearchBar", singleHeader);
 
-  let oneHeader = singleHeader.map(({ item }) => {
-    return item;
-  });
-  console.log("single item", oneHeader);
   const submitHandler = (e) => {
-    // if (item.name.match(searchInput)) {
-    //   setQuery(item.name);
-    // }
+    e.preventDefault();
+    console.log("submit clicked");
     // if (
     //   searchInput.length > 0 &&
     //   singleHeader.filter((item) => {
-    //     setQuery(item);
-    //     console.log(query);
-
-    //     return query;
+    //     setQuery(item.name);
+    //     console.log("query in searchbar", query);
     //   })
     // )
-    e.preventDefault();
-    name.find((item) => {
-      if (item.includes(query)) {
-        // getSingleResponse();
-        // console.log("headerName", headerName);
-        return setQueryResult();
-      }
-    });
+    // if (item.name.match(searchInput)) {
+    //   setQuery(item.name);
+    // }
+
+    // )
+    // name.find((item) => {
+    //   if (item.includes(query)) {
+    //
+    //     return setQueryResult();
+    //   }
+    // });
     // console.log("queryResult", queryResult);
     // getSingleResponse();
-    setSearchInput("");
+    // setSearchInput("");
+    return;
   };
   return (
     <div>
