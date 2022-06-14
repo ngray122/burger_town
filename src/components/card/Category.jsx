@@ -59,9 +59,9 @@ const Category = () => {
       <Container>
         <SearchBar />
 
-        <Row xs={1} md={columnsPerRow}>
+        {/* <Row xs={1} md={columnsPerRow}>
           {getColumnsForRow()}
-        </Row>
+        </Row> */}
         <ItemPagination
           itemsPerPage={itemsPerPage}
           totalItems={allHeaders.length}
