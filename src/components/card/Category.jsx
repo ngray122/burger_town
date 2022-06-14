@@ -19,7 +19,6 @@ const Category = () => {
     headers,
     setPath,
     path,
-    columnsPerRow,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {
@@ -27,38 +26,12 @@ const Category = () => {
       setPath(header);
     });
   }, [path]);
-  // console.log("singleHeader in Category", singleHeader);
-  // const getColumnsForRow = () => {
-  //   let items = singleHeader.map(
-  //     ({ id, image, name, episode, season, price }) => {
-  //       return (
-  //         <>
-  //           <Col key={id}>
-  //             <OneCard>
-  //               <CardBody>
-  //                 <CardImg image={image} />
-  //                 <CardTitle name={name} />
-  //                 <CardSubtitle season={season} episode={episode} />
-  //                 <CardSubtitle price={price} />
-  //               </CardBody>
-  //             </OneCard>
-  //           </Col>
-  //         </>
-  //       );
-  //     }
-  //   );
-
-  //   return items.slice(indexOfFirstPost, indexOfLastPost);
-  // };
 
   return (
     <>
       <Container>
         <SearchBar />
 
-        {/* <Row xs={1} md={columnsPerRow}>
-          {getColumnsForRow()}
-        </Row> */}
         <ItemPagination
           itemsPerPage={itemsPerPage}
           totalItems={allHeaders.length}

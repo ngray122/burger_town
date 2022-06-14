@@ -20,8 +20,10 @@ const SearchBar = () => {
   const getQueryMatch = () => {
     let items = singleHeader
       .filter((item) => {
-        if (item.name.toLowerCase().includes(searchInput.toLowerCase())) {
-          // console.log("item in getQueryMatch", item);
+        if (
+          item.hasOwnProperty("name") &&
+          item.name.toLowerCase().includes(searchInput.toLowerCase())
+        ) {
           return item;
         }
       })
