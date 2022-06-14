@@ -1,14 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { Row, Container } from "reactstrap";
+import { Container } from "reactstrap";
 import ItemPagination from "./ItemPagination";
-import OneCard from "../card/OneCard";
-
 import SearchBar from "../search/SearchBar";
 import { ApiContext } from "../../App";
-import CardImg from "../card/CardImg";
-import CardTitle from "../card/CardTitle";
-import CardSubtitle from "../card/CardSubtitle";
-import { Col, CardBody } from "reactstrap";
 
 const Category = () => {
   const {
