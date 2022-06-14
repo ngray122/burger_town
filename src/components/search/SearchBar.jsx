@@ -5,10 +5,11 @@ import { ApiContext } from "../../App";
 import CardImg from "../card/CardImg";
 import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
-import { Row, CardBody } from "reactstrap";
+import { Row, Col, CardBody } from "reactstrap";
 
 const SearchBar = () => {
-  const { singleHeader, columnsPerRow } = useContext(ApiContext);
+  const { singleHeader, columnsPerRow, itemsPerPage, currentPage } =
+    useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
 
   const handleSearch = (e) => {
@@ -20,29 +21,33 @@ const SearchBar = () => {
     let items = singleHeader
       .filter((item) => {
         if (item.name.toLowerCase().includes(searchInput.toLowerCase())) {
-          console.log("item in submithanler", item);
+          // console.log("item in getQueryMatch", item);
           return item;
         }
       })
       .map((item, index) => {
         return (
-          <OneCard key={index}>
-            <CardBody>
-              <CardImg image={item.image} />
-              <CardTitle name={item.name} />
-              <CardSubtitle season={item.season} episode={item.episode} />
-              <CardSubtitle price={item.price} />
-            </CardBody>
-          </OneCard>
+          <Col>
+            <OneCard key={index}>
+              <CardBody>
+                <CardImg image={item.image} />
+                <CardTitle name={item.name} />
+                <CardSubtitle season={item.season} episode={item.episode} />
+                <CardSubtitle price={item.price} />
+              </CardBody>
+            </OneCard>
+          </Col>
         );
       });
 
-    return items;
+    return items.slice(indexOfFirstPost, indexOfLastPost);
   };
+  const indexOfLastPost = currentPage * itemsPerPage;
+  const indexOfFirstPost = indexOfLastPost - itemsPerPage;
 
   const submitHandler = (e) => {
     e.preventDefault();
-    getQueryMatch();
+    // getQueryMatch();
     setSearchInput("");
 
     return;
@@ -56,7 +61,7 @@ const SearchBar = () => {
           onChange={(e) => handleSearch(e)}
           value={searchInput}
         ></Input>
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Clear Search</Button>
       </Form>
 
       <Row xs={1} md={columnsPerRow}>

@@ -19,7 +19,6 @@ export default function ApiProvider({ children }) {
         .get(`https://bobsburgers-api.herokuapp.com/`)
         .then((res) => {
           setAllHeaders(res.data);
-          //   console.log("allHeaders", allHeaders);
         })
         .catch((err) => {
           console.log("error!! ====> ", err);
@@ -34,7 +33,6 @@ export default function ApiProvider({ children }) {
         .get(`https://bobsburgers-api.herokuapp.com/${path}`)
         .then((res) => {
           setSingleHeader(res.data);
-          // console.log("single header in api call", singleHeader);
         })
         .catch((err) => {
           console.log("error!! ====> ", err);
@@ -46,7 +44,7 @@ export default function ApiProvider({ children }) {
   let name = singleHeader.map(({ name }) => {
     return name;
   });
-  //   console.log("name in context", name);
+
   return (
     <ApiContext.Provider
       value={{

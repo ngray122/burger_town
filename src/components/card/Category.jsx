@@ -18,7 +18,6 @@ const Category = () => {
     currentPage,
     headers,
     setPath,
-    singleHeader,
     path,
     columnsPerRow,
   } = useContext(ApiContext);
@@ -29,30 +28,28 @@ const Category = () => {
     });
   }, [path]);
   // console.log("singleHeader in Category", singleHeader);
-  const getColumnsForRow = () => {
-    let items = singleHeader.map(
-      ({ id, image, name, episode, season, price }) => {
-        return (
-          <>
-            <Col key={id}>
-              <OneCard>
-                <CardBody>
-                  <CardImg image={image} />
-                  <CardTitle name={name} />
-                  <CardSubtitle season={season} episode={episode} />
-                  <CardSubtitle price={price} />
-                </CardBody>
-              </OneCard>
-            </Col>
-          </>
-        );
-      }
-    );
+  // const getColumnsForRow = () => {
+  //   let items = singleHeader.map(
+  //     ({ id, image, name, episode, season, price }) => {
+  //       return (
+  //         <>
+  //           <Col key={id}>
+  //             <OneCard>
+  //               <CardBody>
+  //                 <CardImg image={image} />
+  //                 <CardTitle name={name} />
+  //                 <CardSubtitle season={season} episode={episode} />
+  //                 <CardSubtitle price={price} />
+  //               </CardBody>
+  //             </OneCard>
+  //           </Col>
+  //         </>
+  //       );
+  //     }
+  //   );
 
-    return items.slice(indexOfFirstPost, indexOfLastPost);
-  };
-  const indexOfLastPost = currentPage * itemsPerPage;
-  const indexOfFirstPost = indexOfLastPost - itemsPerPage;
+  //   return items.slice(indexOfFirstPost, indexOfLastPost);
+  // };
 
   return (
     <>
