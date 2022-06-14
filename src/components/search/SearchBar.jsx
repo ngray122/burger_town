@@ -49,7 +49,6 @@ const SearchBar = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // getQueryMatch();
     setSearchInput("");
 
     return;
