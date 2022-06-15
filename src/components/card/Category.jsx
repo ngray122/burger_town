@@ -1,67 +1,34 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams } from "react-router";
-import { Row, Col, Container, CardBody } from "reactstrap";
-import OneCard from "./OneCard";
-import CardImg from "./CardImg";
-import CardTitle from "./CardTitle";
-import CardSubtitle from "./CardSubtitle";
+import React, { useContext, useEffect } from "react";
+import { Container } from "reactstrap";
 import ItemPagination from "./ItemPagination";
+import SearchBar from "../search/SearchBar";
+import { ApiContext } from "../../App";
 
 const Category = () => {
-  const [categoryList, setCategoryList] = useState({});
-  const headers = Object.values(categoryList);
-  const { header } = useParams();
-  const columnsPerRow = 4;
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(20);
-
+  const {
+    setCurrentPage,
+    allHeaders,
+    itemsPerPage,
+    currentPage,
+    headers,
+    setPath,
+    path,
+  } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   useEffect(() => {
-    axios
-      .get(`https://bobsburgers-api.herokuapp.com/${header}/`)
-      .then((response) => {
-        setCategoryList(response.data);
-      })
-      .catch((err) => {
-        console.log("error!! ====> ", err);
-      });
-  }, [header]);
-  const indexOfLastPost = currentPage * itemsPerPage;
-  const indexOfFirstPost = indexOfLastPost - itemsPerPage;
-
-  const getColumnsForRow = () => {
-    let items = headers.map(({ id, image, name, episode, season, price }) => {
-      return (
-        <>
-          <Col>
-            <OneCard>
-              <CardBody key={id}>
-                <CardImg image={image} />
-                <CardTitle name={name} />
-                <CardSubtitle season={season} episode={episode} />
-                <CardSubtitle price={price} />
-              </CardBody>
-            </OneCard>
-          </Col>
-        </>
-      );
+    headers.map((header) => {
+      setPath(header);
     });
-
-    return items.slice(indexOfFirstPost, indexOfLastPost);
-  };
+  }, [path]);
 
   return (
     <>
       <Container>
-        <h1>{header}</h1>
-        <Row xs={1} md={columnsPerRow}>
-          {getColumnsForRow()}
-        </Row>
+        <SearchBar />
+
         <ItemPagination
           itemsPerPage={itemsPerPage}
-          totalItems={categoryList.length}
+          totalItems={allHeaders.length}
           paginate={paginate}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
@@ -75,4 +42,3 @@ export default Category;
 ItemPagination.defaultProps = {
   itemsPerPage: 20,
 };
-git;

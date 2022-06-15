@@ -1,5 +1,4 @@
 import React from "react";
-// import CardImg from "reactstrap";
 
 const CardImg = ({ image }) =>
   image ? (

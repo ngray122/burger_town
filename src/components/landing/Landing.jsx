@@ -1,10 +1,9 @@
 import React from "react";
-import Category from "../card/Category";
 
 const Landing = () => {
   return (
     <div>
-      <Category />
+      <h1>Welcome to BurgerTown</h1>
     </div>
   );
 };

@@ -1,15 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Pagination, PaginationLink, PaginationItem } from "reactstrap";
+import { ApiContext } from "../../App";
 
-const ItemPagination = ({
-  itemsPerPage,
-  totalItems,
-  paginate,
-  currentPage,
-  setCurrentPage,
-}) => {
+const ItemPagination = ({ totalItems, paginate }) => {
   const pageNumbers = [];
-
+  const { setCurrentPage, itemsPerPage, currentPage } = useContext(ApiContext);
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pageNumbers.push(i);
   }
