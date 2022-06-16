@@ -8,8 +8,13 @@ import CardSubtitle from "../card/CardSubtitle";
 import { Row, Col, CardBody } from "reactstrap";
 
 const SearchBar = () => {
-  const { singleHeader, columnsPerRow, itemsPerPage, currentPage } =
-    useContext(ApiContext);
+  const {
+    singleHeader,
+    columnsPerRow,
+    itemsPerPage,
+    currentPage,
+    toggleModal,
+  } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
 
   const handleSearch = (e) => {
@@ -29,7 +34,7 @@ const SearchBar = () => {
       })
       .map((item, index) => {
         return (
-          <Col>
+          <Col onClick={toggleModal}>
             <OneCard key={index}>
               <CardBody>
                 <CardImg image={item.image} />

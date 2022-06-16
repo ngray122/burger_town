@@ -11,6 +11,9 @@ export default function ApiProvider({ children }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
   const [path, setPath] = useState("");
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => setModal(!modal);
   useEffect(() => {
     const getResponse = () => {
       axios

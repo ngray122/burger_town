@@ -3,6 +3,7 @@ import { Container } from "reactstrap";
 import ItemPagination from "./ItemPagination";
 import SearchBar from "../search/SearchBar";
 import { ApiContext } from "../../App";
+import ResultModal from "../modal/ResultModal";
 
 const Category = () => {
   const {
@@ -13,6 +14,8 @@ const Category = () => {
     headers,
     setPath,
     path,
+    toggleModal,
+    modal,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {
@@ -25,7 +28,7 @@ const Category = () => {
     <>
       <Container>
         <SearchBar />
-
+        <ResultModal isOpen={modal} toggleModal={toggleModal}></ResultModal>
         <ItemPagination
           itemsPerPage={itemsPerPage}
           totalItems={allHeaders.length}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Modal } from "reactstrap";
 import { ApiContext } from "../../App";
 import OneCard from "../card/OneCard";
@@ -6,10 +6,14 @@ import OneCard from "../card/OneCard";
 const ResultModal = () => {
   const { singleheader } = useContext(ApiContext);
   console.log("singleheader in ResultModal", singleheader);
+  //   console.log("isOpen", isOpen);
   return (
-    <Modal>
-      <OneCard>From Modal</OneCard>
-    </Modal>
+    <>
+      <div>t4est</div>
+      <Modal>
+        <OneCard>From Modal</OneCard>
+      </Modal>
+    </>
   );
 };
 
