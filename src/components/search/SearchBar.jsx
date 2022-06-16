@@ -37,9 +37,9 @@ const SearchBar = () => {
       })
       .map((item) => {
         return (
-          <Col onClick={toggle}>
+          <Col onClick={toggle} key={item.id}>
             {console.log("log openModal in SearchBar", openModal)}
-            <OneCard key={item.id}>
+            <OneCard>
               <CardBody>
                 <CardImg image={item.image} />
                 <CardTitle name={item.name} />

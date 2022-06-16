@@ -7,7 +7,7 @@ import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
 
 const ResultModal = () => {
-  const { toggle } = useContext(ApiContext);
+  const { toggle, openModal } = useContext(ApiContext);
 
   // let item = singleHeader.map((item)=>
   // return )
@@ -15,20 +15,21 @@ const ResultModal = () => {
   //   console.log("isOpen", isOpen);
   return (
     <>
-      <div onClick={toggle}>test text</div>
-
-      <Modal>
-        <OneCard>
-          <CardBody>
-            <CardImg />
-            <ModalHeader>
-              <CardTitle>Title here</CardTitle>
-            </ModalHeader>
-            <CardSubtitle />
-            <CardSubtitle />
-          </CardBody>
-        </OneCard>
-      </Modal>
+      <div>
+        {console.log("toggle in result modal", openModal)}
+        <Modal isOpen={openModal} onClick={toggle}>
+          <OneCard>
+            <CardBody>
+              <CardImg />
+              <ModalHeader>
+                <CardTitle>Title here</CardTitle>
+              </ModalHeader>
+              <CardSubtitle />
+              <CardSubtitle />
+            </CardBody>
+          </OneCard>
+        </Modal>
+      </div>
     </>
   );
 };
