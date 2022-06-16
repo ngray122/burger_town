@@ -28,7 +28,6 @@ const Category = () => {
     <>
       <Container>
         <SearchBar />
-        {openModal && <ResultModal />}
         <ItemPagination
           itemsPerPage={itemsPerPage}
           totalItems={allHeaders.length}

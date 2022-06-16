@@ -5,6 +5,7 @@ import { ApiContext } from "../../App";
 import CardImg from "../card/CardImg";
 import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
+import ResultModal from "../modal/ResultModal";
 import { Row, Col, CardBody } from "reactstrap";
 
 const SearchBar = () => {
@@ -36,7 +37,7 @@ const SearchBar = () => {
       .map((item) => {
         return (
           <Col onClick={() => setOpenModal(true)}>
-            {console.log("log openModal", openModal)}
+            {console.log("log openModal in SearchBar", openModal)}
             <OneCard key={item.id}>
               <CardBody>
                 <CardImg image={item.image} />
@@ -72,9 +73,13 @@ const SearchBar = () => {
         <Button type="submit">Clear Search</Button>
       </Form>
 
-      <Row xs={1} md={columnsPerRow}>
-        {getQueryMatch()}
-      </Row>
+      {openModal ? (
+        <ResultModal />
+      ) : (
+        <Row xs={1} md={columnsPerRow}>
+          {getQueryMatch()}
+        </Row>
+      )}
     </div>
   );
 };
