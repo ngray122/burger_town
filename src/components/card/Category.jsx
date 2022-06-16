@@ -14,8 +14,8 @@ const Category = () => {
     headers,
     setPath,
     path,
-    toggleModal,
-    modal,
+    openModal,
+    setOpenModal,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {
@@ -28,7 +28,7 @@ const Category = () => {
     <>
       <Container>
         <SearchBar />
-        <ResultModal isOpen={modal} toggleModal={toggleModal}></ResultModal>
+        {openModal && <ResultModal />}
         <ItemPagination
           itemsPerPage={itemsPerPage}
           totalItems={allHeaders.length}

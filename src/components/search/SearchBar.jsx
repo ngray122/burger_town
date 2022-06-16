@@ -13,7 +13,8 @@ const SearchBar = () => {
     columnsPerRow,
     itemsPerPage,
     currentPage,
-    toggleModal,
+    openModal,
+    setOpenModal,
   } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
 
@@ -32,10 +33,11 @@ const SearchBar = () => {
           return item;
         }
       })
-      .map((item, index) => {
+      .map((item) => {
         return (
-          <Col onClick={toggleModal}>
-            <OneCard key={index}>
+          <Col onClick={() => setOpenModal(true)}>
+            {console.log("log openModal", openModal)}
+            <OneCard key={item.id}>
               <CardBody>
                 <CardImg image={item.image} />
                 <CardTitle name={item.name} />

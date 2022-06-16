@@ -11,16 +11,17 @@ const ResultModal = () => {
 
   // let item = singleHeader.map((item)=>
   // return )
-  console.log("singleheader in ResultModal", singleHeader);
+  //   console.log("singleheader in ResultModal", singleHeader);
   //   console.log("isOpen", isOpen);
   return (
     <>
+      <div>test text</div>
       <Modal>
         <OneCard>
           <CardBody>
             <CardImg />
             <ModalHeader>
-              <CardTitle />
+              <CardTitle>Title here</CardTitle>
             </ModalHeader>
             <CardSubtitle />
             <CardSubtitle />

@@ -11,12 +11,8 @@ export default function ApiProvider({ children }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
   const [path, setPath] = useState("");
-  const [modal, setModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
-  const toggleModal = () => {
-    console.log("toggleModal Clickec");
-    setModal(!modal);
-  };
   useEffect(() => {
     const getResponse = () => {
       axios
@@ -63,7 +59,8 @@ export default function ApiProvider({ children }) {
         headers,
         name,
         columnsPerRow,
-        toggleModal,
+        openModal,
+        setOpenModal,
       }}
     >
       {children}
