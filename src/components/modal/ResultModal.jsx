@@ -7,7 +7,7 @@ import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
 
 const ResultModal = () => {
-  const { singleHeader } = useContext(ApiContext);
+  const { toggle } = useContext(ApiContext);
 
   // let item = singleHeader.map((item)=>
   // return )
@@ -15,7 +15,8 @@ const ResultModal = () => {
   //   console.log("isOpen", isOpen);
   return (
     <>
-      <div>test text</div>
+      <div onClick={toggle}>test text</div>
+
       <Modal>
         <OneCard>
           <CardBody>

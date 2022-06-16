@@ -14,8 +14,6 @@ const Category = () => {
     headers,
     setPath,
     path,
-    openModal,
-    setOpenModal,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {

@@ -16,6 +16,7 @@ const SearchBar = () => {
     currentPage,
     openModal,
     setOpenModal,
+    toggle,
   } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
 
@@ -36,7 +37,7 @@ const SearchBar = () => {
       })
       .map((item) => {
         return (
-          <Col onClick={() => setOpenModal(true)}>
+          <Col onClick={toggle}>
             {console.log("log openModal in SearchBar", openModal)}
             <OneCard key={item.id}>
               <CardBody>
@@ -74,7 +75,7 @@ const SearchBar = () => {
       </Form>
 
       {openModal ? (
-        <ResultModal />
+        <ResultModal onClick={toggle} />
       ) : (
         <Row xs={1} md={columnsPerRow}>
           {getQueryMatch()}
