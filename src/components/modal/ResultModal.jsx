@@ -1,17 +1,31 @@
 import React, { useContext } from "react";
-import { Modal } from "reactstrap";
+import { Modal, CardBody, ModalHeader } from "reactstrap";
 import { ApiContext } from "../../App";
 import OneCard from "../card/OneCard";
+import CardImg from "../card/CardImg";
+import CardTitle from "../card/CardTitle";
+import CardSubtitle from "../card/CardSubtitle";
 
 const ResultModal = () => {
-  const { singleheader } = useContext(ApiContext);
-  console.log("singleheader in ResultModal", singleheader);
+  const { singleHeader } = useContext(ApiContext);
+
+  // let item = singleHeader.map((item)=>
+  // return )
+  console.log("singleheader in ResultModal", singleHeader);
   //   console.log("isOpen", isOpen);
   return (
     <>
-      <div>t4est</div>
       <Modal>
-        <OneCard>From Modal</OneCard>
+        <OneCard>
+          <CardBody>
+            <CardImg />
+            <ModalHeader>
+              <CardTitle />
+            </ModalHeader>
+            <CardSubtitle />
+            <CardSubtitle />
+          </CardBody>
+        </OneCard>
       </Modal>
     </>
   );

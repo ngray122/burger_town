@@ -13,7 +13,10 @@ export default function ApiProvider({ children }) {
   const [path, setPath] = useState("");
   const [modal, setModal] = useState(false);
 
-  const toggleModal = () => setModal(!modal);
+  const toggleModal = () => {
+    console.log("toggleModal Clickec");
+    setModal(!modal);
+  };
   useEffect(() => {
     const getResponse = () => {
       axios
@@ -60,6 +63,7 @@ export default function ApiProvider({ children }) {
         headers,
         name,
         columnsPerRow,
+        toggleModal,
       }}
     >
       {children}
