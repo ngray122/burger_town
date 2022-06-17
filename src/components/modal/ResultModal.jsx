@@ -8,26 +8,41 @@ import CardSubtitle from "../card/CardSubtitle";
 
 const ResultModal = ({ item }) => {
   const { toggle } = useContext(ApiContext);
-
+  const {
+    name,
+    image,
+    gender,
+    season,
+    episode,
+    hairColor,
+    occupation,
+    voicedBy,
+    wikiUrl,
+    firstEpisode,
+    age,
+    relatives,
+    airDate,
+    totalViewers,
+  } = item;
   return (
     <>
       <div>
         <Modal isOpen autoFocus key={item.id} onClick={toggle}>
           <OneCard>
             <ModalBody>
-              <CardTitle name={item.name} />
-              <CardImg image={item.image} />
-              <CardSubtitle gender={item.gender} />
-              <CardSubtitle season={item.season} episode={item.episode} />
-              <CardSubtitle hairColor={item.hairColor} />
-              <CardSubtitle occupation={item.occupation} />
-              <CardSubtitle voicedBy={item.voicedBy} />
-              <CardSubtitle wikiUrl={item.wikiUrl} />
-              <CardSubtitle firstEpisode={item.firstEpisode} />
-              <CardSubtitle age={item.age} />
-              <CardSubtitle relatives={item.relatives} />
-              <CardSubtitle airDate={item.airDate} />
-              <CardSubtitle totalViewers={item.totalViewers} />
+              <CardTitle name={name} />
+              <CardImg image={image} />
+              <CardSubtitle gender={gender} />
+              <CardSubtitle season={season} episode={episode} />
+              <CardSubtitle hairColor={hairColor} />
+              <CardSubtitle occupation={occupation} />
+              <CardSubtitle voicedBy={voicedBy} />
+              <CardSubtitle wikiUrl={wikiUrl} />
+              <CardSubtitle firstEpisode={firstEpisode} />
+              <CardSubtitle age={age} />
+              <CardSubtitle relatives={relatives} />
+              <CardSubtitle airDate={airDate} />
+              <CardSubtitle totalViewers={totalViewers} />
             </ModalBody>
           </OneCard>
         </Modal>
