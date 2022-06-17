@@ -26,6 +26,8 @@ const ResultModal = ({ item }) => {
               <CardSubtitle firstEpisode={item.firstEpisode} />
               <CardSubtitle age={item.age} />
               <CardSubtitle relatives={item.relatives} />
+              <CardSubtitle airDate={item.airDate} />
+              <CardSubtitle totalViewers={item.totalViewers} />
             </ModalBody>
           </OneCard>
         </Modal>

@@ -12,10 +12,12 @@ const CardSubtitle = ({
   wikiUrl,
   firstEpisode,
   relatives,
+  airDate,
+  totalViewers,
 }) =>
   episode ? (
     <h6>
-      S{season} E{episode}
+      Season {season}, Episode {episode}
     </h6>
   ) : null || price ? (
     <h6>Price: {price}</h6>
@@ -37,6 +39,10 @@ const CardSubtitle = ({
     relatives.map((relative, id) => (
       <h6 key={id}> Relative: {relative.name}</h6>
     ))
+  ) : null || airDate ? (
+    <h6>Air Date: {airDate}</h6>
+  ) : null || totalViewers ? (
+    <h6>Total Viewers: {totalViewers}</h6>
   ) : null;
 
 export default CardSubtitle;
