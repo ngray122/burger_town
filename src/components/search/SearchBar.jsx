@@ -15,7 +15,6 @@ const SearchBar = () => {
     itemsPerPage,
     currentPage,
     openModal,
-    setOpenModal,
     toggle,
   } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
