@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Modal, CardBody, ModalHeader } from "reactstrap";
+import { Modal, CardBody, ModalHeader, Button } from "reactstrap";
 import { ApiContext } from "../../App";
 import OneCard from "../card/OneCard";
 import CardImg from "../card/CardImg";
@@ -17,7 +17,8 @@ const ResultModal = () => {
     <>
       <div>
         {console.log("toggle in result modal", openModal)}
-        <Modal isOpen={openModal} onClick={toggle}>
+        <Modal isOpen autoFocus>
+          <Button onClick={toggle}>X</Button>/
           <OneCard>
             <CardBody>
               <CardImg />

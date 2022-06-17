@@ -74,13 +74,10 @@ const SearchBar = () => {
         <Button type="submit">Clear Search</Button>
       </Form>
 
-      {openModal ? (
-        <ResultModal onClick={toggle} />
-      ) : (
-        <Row xs={1} md={columnsPerRow}>
-          {getQueryMatch()}
-        </Row>
-      )}
+      {openModal && <ResultModal onClick={toggle} />}
+      <Row xs={1} md={columnsPerRow}>
+        {getQueryMatch()}
+      </Row>
     </div>
   );
 };
