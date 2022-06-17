@@ -47,6 +47,7 @@ const SearchBar = () => {
                 <CardSubtitle price={item.price} />
               </CardBody>
             </OneCard>
+            {openModal && <ResultModal onClick={toggle} item={item} />}
           </Col>
         );
       });
@@ -74,7 +75,6 @@ const SearchBar = () => {
         <Button type="submit">Clear Search</Button>
       </Form>
 
-      {openModal && <ResultModal onClick={toggle} />}
       <Row xs={1} md={columnsPerRow}>
         {getQueryMatch()}
       </Row>
