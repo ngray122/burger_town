@@ -11,6 +11,7 @@ const CardSubtitle = ({
   voicedBy,
   wikiUrl,
   firstEpisode,
+  relatives,
 }) =>
   episode ? (
     <h6>
@@ -32,6 +33,10 @@ const CardSubtitle = ({
     <h6>Wiki Url: {wikiUrl}</h6>
   ) : null || firstEpisode ? (
     <h6>First Episode: {firstEpisode}</h6>
+  ) : null || relatives ? (
+    relatives.map((relative, id) => (
+      <h6 key={id}> Relative: {relative.name}</h6>
+    ))
   ) : null;
 
 export default CardSubtitle;

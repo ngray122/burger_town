@@ -25,6 +25,7 @@ const ResultModal = ({ item }) => {
               <CardSubtitle wikiUrl={item.wikiUrl} />
               <CardSubtitle firstEpisode={item.firstEpisode} />
               <CardSubtitle age={item.age} />
+              <CardSubtitle relatives={item.relatives} />
             </ModalBody>
           </OneCard>
         </Modal>
