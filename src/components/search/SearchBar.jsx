@@ -7,6 +7,7 @@ import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
 import ResultModal from "../modal/ResultModal";
 import { Row, Col, CardBody } from "reactstrap";
+import { useCallback } from "react";
 
 const SearchBar = () => {
   const {
@@ -18,11 +19,25 @@ const SearchBar = () => {
     toggle,
   } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
+  const [activeItem, setActiveItem] = useState();
+  const [allItems, setAllItems] = useState([]);
 
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
     return searchInput;
   };
+
+  // move .map logic in getQueryMatch, and use
+  // allItems
+  const renderQueryMatch = () => {};
+
+  const handleToggle = useCallback(
+    (item) => {
+      toggle();
+      setActiveItem(item);
+    },
+    [toggle, setActiveItem]
+  );
 
   const getQueryMatch = () => {
     let items = singleHeader
@@ -36,7 +51,7 @@ const SearchBar = () => {
       })
       .map((item) => {
         return (
-          <Col key={item.id} onClick={toggle}>
+          <Col key={item.id} onClick={() => handleToggle(item)}>
             <OneCard>
               <CardBody>
                 <CardImg image={item.image} />
@@ -50,6 +65,8 @@ const SearchBar = () => {
         );
       });
 
+    // these items need to live in local state
+    // setAllItems(items.slice(indexOfFirstPost, indexOfLastPost))
     return items.slice(indexOfFirstPost, indexOfLastPost);
   };
   const indexOfLastPost = currentPage * itemsPerPage;
@@ -62,21 +79,25 @@ const SearchBar = () => {
     return;
   };
   return (
-    <div>
-      <Form onSubmit={submitHandler}>
-        <Input
-          placeholder={`Search ...`}
-          type="text"
-          onChange={(e) => handleSearch(e)}
-          value={searchInput}
-        ></Input>
-        <Button type="submit">Clear Search</Button>
-      </Form>
+    <>
+      <div>
+        <Form onSubmit={submitHandler}>
+          <Input
+            placeholder={`Search ...`}
+            type="text"
+            onChange={(e) => handleSearch(e)}
+            value={searchInput}
+          ></Input>
+          <Button type="submit">Clear Search</Button>
+        </Form>
 
-      <Row xs={1} md={columnsPerRow}>
-        {getQueryMatch()}
-      </Row>
-    </div>
+        <Row xs={1} md={columnsPerRow}>
+          {getQueryMatch()}
+        </Row>
+      </div>
+      {/* you only ever want one modal rendered at a time
+    {openModal && <ResultModal onClick={toggle} item={activeItem} />} */}
+    </>
   );
 };
 
