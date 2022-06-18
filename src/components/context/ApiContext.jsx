@@ -39,6 +39,11 @@ export default function ApiProvider({ children }) {
     if (path) getSingleResponse();
   }, [path]);
 
+  // its hard to tell what name is referring to here?
+  // would you remember what this pointed to if
+  // you came back to this project in 6 months?
+  // its okay if variable names are long, or feel a little clunky
+  // what matters is their use is clear
   let name = singleHeader.map(({ name }) => {
     return name;
   });
