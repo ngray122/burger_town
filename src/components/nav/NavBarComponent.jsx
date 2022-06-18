@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { ApiContext } from "../../App";
+import styles from "./NavBarComponenr.module.css";
 
 const NavBarComponent = () => {
   const { headers, setPath } = useContext(ApiContext);
@@ -22,7 +23,9 @@ const NavBarComponent = () => {
   return (
     <div>
       <Navbar color="dark" dark>
-        <NavbarBrand href="/">Bob's BurgerTown</NavbarBrand>
+        <NavbarBrand href="/">
+          <h1 id="logo">BurgerTown</h1>
+        </NavbarBrand>
 
         <NavbarToggler onClick={isToggle} />
 

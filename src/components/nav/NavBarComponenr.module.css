@@ -1,0 +1,11 @@
+@font-face {
+    font-family: burgerFont;
+    src: url(../../fonts/Bob_Burgers_2.ttf) format("truetype") ;
+    font-weight:normal;
+}
+
+ * {
+  font-family: burgerFont;
+  
+}
+
