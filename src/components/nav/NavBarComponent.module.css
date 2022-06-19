@@ -4,8 +4,11 @@
     font-weight:normal;
 }
 
- * {
+h1 {
   font-family: burgerFont;
+  /* font-size: 2em; */
+  color:#f3ee0f;
+  /* color:#ff051d */
   
 }
 
