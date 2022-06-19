@@ -33,12 +33,15 @@ const NavBarComponent = () => {
           <Nav className="me-auto" navbar>
             <NavItem>Item</NavItem>
             <UncontrolledDropdown nav>
-              {headers.map((header, i) => (
-                <DropdownToggle key={i} nav>
+              {headers.map((header, id) => (
+                <DropdownToggle nav>
                   <Link
+                    className="header-link"
+                    key={id}
                     onClick={() => setPath(header)}
                     to={`/categories/${header}`}
                   >
+                    {console.log("header in NavBar", header)}
                     {header}
                   </Link>
                 </DropdownToggle>

@@ -1,7 +1,6 @@
 @font-face {
     font-family: burgerFont;
     src: url(../../fonts/Bob_Burgers_2.ttf) format("truetype") ;
-    font-weight:normal;
 }
 
 h1 {
@@ -12,3 +11,9 @@ h1 {
   
 }
 
+a  {
+  font-family: burgerFont;
+  text-decoration: none;
+  color:#f3ee0f;
+  font-size: 1.5em;
+}
