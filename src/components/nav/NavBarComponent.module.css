@@ -5,7 +5,7 @@
 
 .logo {
   font-family: burgerFont;
-  font-size: 2em;
+  font-size: 3em;
   color:#f3ee0f;
   /* color:#ff051d */
   
@@ -15,5 +15,15 @@
   font-family: burgerFont;
   text-decoration: none;
   color:#f3ee0f;
-  font-size: 1.5em;
+  font-size: 3em;
+}
+
+.nav_links:hover {
+  font-family: burgerFont;
+  text-decoration: none;
+  color:#ff051d;
+
+}
+.navbar_toggler {
+  font-size: 1.75em;
 }

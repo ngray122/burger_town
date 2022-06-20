@@ -27,11 +27,10 @@ const NavBarComponent = () => {
           <h1 className={styles.logo}>BurgerTown</h1>
         </NavbarBrand>
 
-        <NavbarToggler onClick={isToggle} />
+        <NavbarToggler onClick={isToggle} className={styles.navbar_toggler} />
 
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
-            <NavItem>Item</NavItem>
             <UncontrolledDropdown nav>
               {headers.map((header, id) => (
                 <DropdownToggle nav>
