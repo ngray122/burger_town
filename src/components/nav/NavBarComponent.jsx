@@ -41,7 +41,17 @@ const NavBarComponent = () => {
                     to={`/categories/${header}`}
                   >
                     {console.log("header in NavBar", header)}
-                    {header}
+                    {header === "storeNextDoor" ? (
+                      <span>Store Next Door</span>
+                    ) : header === "characters" ? (
+                      <span>Characters</span>
+                    ) : header === "episodes" ? (
+                      <span>Episodes</span>
+                    ) : header === "pestControlTruck" ? (
+                      <span>Pest Control Truck</span>
+                    ) : header === "burgerOfTheDay" ? (
+                      <span>Burger Of The Day</span>
+                    ) : null}
                   </Link>
                 </DropdownToggle>
               ))}
