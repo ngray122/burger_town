@@ -6,6 +6,7 @@ import CardImg from "../card/CardImg";
 import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
 import { Row, Col, CardBody } from "reactstrap";
+import styles from "./SearchBar.module.css";
 
 const SearchBar = () => {
   const { singleHeader, columnsPerRow, itemsPerPage, currentPage } =
@@ -61,8 +62,11 @@ const SearchBar = () => {
           type="text"
           onChange={(e) => handleSearch(e)}
           value={searchInput}
+          className={styles.search_bar}
         ></Input>
-        <Button type="submit">Clear Search</Button>
+        <Button type="submit" className={styles.search_button}>
+          Clear Search
+        </Button>
       </Form>
 
       <Row xs={1} md={columnsPerRow}>

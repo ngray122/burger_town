@@ -1,0 +1,10 @@
+
+.search_bar {
+    margin: 20px;
+    /* width:80%; */
+    justify-content: center;
+}
+
+.search_button {
+    margin-bottom: 20px;
+}
