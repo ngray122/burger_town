@@ -3,15 +3,15 @@
     src: url(../../fonts/Bob_Burgers_2.ttf) format("truetype") ;
 }
 
-h1 {
+.logo {
   font-family: burgerFont;
-  /* font-size: 2em; */
+  font-size: 2em;
   color:#f3ee0f;
   /* color:#ff051d */
   
 }
 
-a  {
+.nav_links {
   font-family: burgerFont;
   text-decoration: none;
   color:#f3ee0f;

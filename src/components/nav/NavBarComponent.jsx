@@ -24,7 +24,7 @@ const NavBarComponent = () => {
     <div>
       <Navbar color="dark" dark>
         <NavbarBrand href="/">
-          <h1 className="logo">BurgerTown</h1>
+          <h1 className={styles.logo}>BurgerTown</h1>
         </NavbarBrand>
 
         <NavbarToggler onClick={isToggle} />
@@ -36,7 +36,7 @@ const NavBarComponent = () => {
               {headers.map((header, id) => (
                 <DropdownToggle nav>
                   <Link
-                    className="header-link"
+                    className={styles.nav_links}
                     key={id}
                     onClick={() => setPath(header)}
                     to={`/categories/${header}`}
