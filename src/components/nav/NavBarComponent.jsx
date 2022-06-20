@@ -40,7 +40,6 @@ const NavBarComponent = () => {
                     onClick={() => setPath(header)}
                     to={`/categories/${header}`}
                   >
-                    {console.log("header in NavBar", header)}
                     {header === "storeNextDoor" ? (
                       <span>Store Next Door</span>
                     ) : header === "characters" ? (
