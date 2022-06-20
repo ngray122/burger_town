@@ -10,6 +10,12 @@
   /* color:#ff051d */
   
 }
+.logo:hover {
+  font-family: burgerFont;
+  font-size: 3em;
+  color:#ff051d;
+  
+}
 
 .nav_links {
   font-family: burgerFont;
