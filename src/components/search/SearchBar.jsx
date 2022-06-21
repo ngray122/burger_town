@@ -29,23 +29,23 @@ const SearchBar = () => {
 
   // move .map logic in getQueryMatch, and use
   // allItems
-  const renderQueryMatch = () => {
-    // getQueryMatch();
-    // allItems.map((item) => {
-    //   return (
-    //     <Col key={item.id} onClick={() => handleToggle(item)}>
-    //       <OneCard>
-    //         <CardBody>
-    //           <CardImg image={item.image} />
-    //           <CardTitle name={item.name} />
-    //           <CardSubtitle season={item.season} episode={item.episode} />
-    //           <CardSubtitle price={item.price} />
-    //         </CardBody>
-    //       </OneCard>
-    //     </Col>
-    //   );
-    // });
-  };
+  // const renderQueryMatch = () => {
+  //   allItems.map((item) => {
+  //     console.log("item in searchbar", item);
+  //     return (
+  //       <Col key={item.id} onClick={() => handleToggle(item)}>
+  //         <OneCard>
+  //           <CardBody>
+  //             <CardImg image={item.image} />
+  //             <CardTitle name={item.name} />
+  //             <CardSubtitle season={item.season} episode={item.episode} />
+  //             <CardSubtitle price={item.price} />
+  //           </CardBody>
+  //         </OneCard>
+  //       </Col>
+  //     );
+  //   });
+  // };
 
   const handleToggle = useCallback(
     (item) => {
@@ -81,6 +81,7 @@ const SearchBar = () => {
       });
 
     // these items need to live in local state
+    // setAllItems(items.slice(indexOfFirstPost, indexOfLastPost))
     return items.slice(indexOfFirstPost, indexOfLastPost);
   };
   const indexOfLastPost = currentPage * itemsPerPage;
@@ -109,7 +110,7 @@ const SearchBar = () => {
           {getQueryMatch()}
         </Row>
       </div>
-      {openModal && <ResultModal onClick={toggle} item={activeItem} />}
+      {openModal && <ResultModal onClick={handleToggle} item={activeItem} />}
     </>
   );
 };
