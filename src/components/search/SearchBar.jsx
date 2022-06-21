@@ -60,7 +60,6 @@ const SearchBar = () => {
                 <CardSubtitle price={item.price} />
               </CardBody>
             </OneCard>
-            {openModal && <ResultModal onClick={toggle} item={item} />}
           </Col>
         );
       });
@@ -95,8 +94,7 @@ const SearchBar = () => {
           {getQueryMatch()}
         </Row>
       </div>
-      {/* you only ever want one modal rendered at a time
-    {openModal && <ResultModal onClick={toggle} item={activeItem} />} */}
+      {openModal && <ResultModal onClick={toggle} item={activeItem} />}
     </>
   );
 };
