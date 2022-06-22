@@ -7,6 +7,7 @@ import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
 import { Row, Col, CardBody } from "reactstrap";
 import styles from "./SearchBar.module.css";
+import { useCallback } from "react";
 
 const SearchBar = () => {
   const { singleHeader, columnsPerRow, itemsPerPage, currentPage } =
