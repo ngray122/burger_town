@@ -37,7 +37,7 @@ const NavBarComponent = () => {
           <Nav className="me-auto" navbar>
             <UncontrolledDropdown nav>
               {headers.map((header, id) => (
-                <DropdownToggle nav>
+                <DropdownToggle key={id} nav>
                   <Link
                     className={styles.nav_links}
                     key={id}

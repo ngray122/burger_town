@@ -11,6 +11,10 @@ export default function ApiProvider({ children }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
   const [path, setPath] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+
+  const toggle = () => setOpenModal(!openModal);
+
   useEffect(() => {
     const getResponse = () => {
       axios
@@ -57,6 +61,9 @@ export default function ApiProvider({ children }) {
         headers,
         name,
         columnsPerRow,
+        openModal,
+        setOpenModal,
+        toggle,
       }}
     >
       {children}
