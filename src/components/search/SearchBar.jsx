@@ -7,6 +7,7 @@ import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
 import ResultModal from "../modal/ResultModal";
 import { Row, Col, CardBody } from "reactstrap";
+import styles from "./SearchBar.module.css";
 import { useCallback } from "react";
 
 const SearchBar = () => {
@@ -73,24 +74,25 @@ const SearchBar = () => {
     return;
   };
   return (
-    <>
-      <div>
-        <Form onSubmit={submitHandler}>
-          <Input
-            placeholder={`Search ...`}
-            type="text"
-            onChange={(e) => handleSearch(e)}
-            value={searchInput}
-          ></Input>
-          <Button type="submit">Clear Search</Button>
-        </Form>
+    <div>
+      <Form onSubmit={submitHandler}>
+        <Input
+          placeholder={`Search ...`}
+          type="text"
+          onChange={(e) => handleSearch(e)}
+          value={searchInput}
+          className={styles.search_bar}
+        ></Input>
+        <Button type="submit" className={styles.search_button}>
+          Clear Search
+        </Button>
+      </Form>
 
-        <Row xs={1} md={columnsPerRow}>
-          {renderQueryMatch()}
-        </Row>
-      </div>
+      <Row xs={1} md={columnsPerRow}>
+        {renderQueryMatch()}
+      </Row>
       {openModal && <ResultModal onClick={handleToggle} item={activeItem} />}
-    </>
+    </div>
   );
 };
 
