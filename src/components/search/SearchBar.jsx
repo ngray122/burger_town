@@ -1,53 +1,71 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Input, Form, Button } from "reactstrap";
 import OneCard from "../card/OneCard";
 import { ApiContext } from "../../App";
 import CardImg from "../card/CardImg";
 import CardTitle from "../card/CardTitle";
 import CardSubtitle from "../card/CardSubtitle";
+import ResultModal from "../modal/ResultModal";
 import { Row, Col, CardBody } from "reactstrap";
 import styles from "./SearchBar.module.css";
 import { useCallback } from "react";
 
 const SearchBar = () => {
-  const { singleHeader, columnsPerRow, itemsPerPage, currentPage } =
-    useContext(ApiContext);
+  const {
+    singleHeader,
+    columnsPerRow,
+    itemsPerPage,
+    currentPage,
+    openModal,
+    toggle,
+  } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
+  const [activeItem, setActiveItem] = useState();
+  const [allItems, setAllItems] = useState([]);
 
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
     return searchInput;
   };
 
-  const getQueryMatch = () => {
-    let items = singleHeader
-      .filter((item) => {
-        if (
-          item.hasOwnProperty("name") &&
-          item.name.toLowerCase().includes(searchInput.toLowerCase())
-        ) {
-          return item;
-        }
-      })
-      .map((item, index) => {
-        return (
-          <Col>
-            <OneCard key={index}>
-              <CardBody>
-                <CardImg image={item.image} />
-                <CardTitle name={item.name} />
-                <CardSubtitle season={item.season} episode={item.episode} />
-                <CardSubtitle price={item.price} />
-              </CardBody>
-            </OneCard>
-          </Col>
-        );
-      });
-
-    return items.slice(indexOfFirstPost, indexOfLastPost);
+  const renderQueryMatch = () => {
+    return allItems.map((item) => {
+      return (
+        <Col key={item.id} onClick={() => handleToggle(item)}>
+          <OneCard key={item.id}>
+            <CardBody>
+              <CardImg image={item.image} />
+              <CardTitle name={item.name} />
+              <CardSubtitle season={item.season} episode={item.episode} />
+              <CardSubtitle price={item.price} />
+            </CardBody>
+          </OneCard>
+        </Col>
+      );
+    });
   };
+
+  const handleToggle = useCallback(
+    (item) => {
+      toggle();
+      setActiveItem(item);
+    },
+    [toggle, setActiveItem]
+  );
   const indexOfLastPost = currentPage * itemsPerPage;
   const indexOfFirstPost = indexOfLastPost - itemsPerPage;
+
+  useEffect(() => {
+    let items = singleHeader.filter((item) => {
+      if (
+        item.hasOwnProperty("name") &&
+        item.name.toLowerCase().includes(searchInput.toLowerCase())
+      ) {
+        return item;
+      }
+    });
+    return setAllItems(items.slice(indexOfFirstPost, indexOfLastPost));
+  }, [singleHeader, searchInput, indexOfFirstPost, indexOfLastPost]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -71,8 +89,9 @@ const SearchBar = () => {
       </Form>
 
       <Row xs={1} md={columnsPerRow}>
-        {getQueryMatch()}
+        {renderQueryMatch()}
       </Row>
+      {openModal && <ResultModal onClick={handleToggle} item={activeItem} />}
     </div>
   );
 };

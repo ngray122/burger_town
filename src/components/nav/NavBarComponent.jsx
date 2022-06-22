@@ -5,13 +5,20 @@ import {
   NavbarToggler,
   Collapse,
   Nav,
-  NavItem,
   UncontrolledDropdown,
   DropdownToggle,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { ApiContext } from "../../App";
+import styles from "./NavBarComponent.module.css";
 
+const headersMap = {
+  storeNextDoor: "Store Next Door",
+  characters: "Characters",
+  episodes: "Episodes",
+  pestControlTruck: "Pest Control Truck",
+  burgerOfTheDay: "Burger Of The Day",
+};
 const NavBarComponent = () => {
   const { headers, setPath } = useContext(ApiContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -22,24 +29,29 @@ const NavBarComponent = () => {
   return (
     <div>
       <Navbar color="dark" dark>
-        <NavbarBrand href="/">Bob's BurgerTown</NavbarBrand>
-
-        <NavbarToggler onClick={isToggle} />
-
+        <NavbarBrand href="/">
+          <h1 className={styles.logo}>BurgerTown</h1>
+        </NavbarBrand>
+        <NavbarToggler onClick={isToggle} className={styles.navbar_toggler} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
-            <NavItem>Item</NavItem>
             <UncontrolledDropdown nav>
-              {headers.map((header, i) => (
-                <DropdownToggle key={i} nav>
-                  <Link
-                    onClick={() => setPath(header)}
-                    to={`/categories/${header}`}
-                  >
-                    {header}
-                  </Link>
-                </DropdownToggle>
-              ))}
+              {headers.map((header, id) =>
+                header === "endCreditsSequence" ? null : (
+                  <DropdownToggle key={id} nav>
+                    <Link
+                      className={styles.nav_links}
+                      key={id}
+                      onClick={() => setPath(header)}
+                      to={`/categories/${header}`}
+                    >
+                      <span className={styles.header_links}>
+                        {headersMap[header] ?? <></>}
+                      </span>
+                    </Link>
+                  </DropdownToggle>
+                )
+              )}
             </UncontrolledDropdown>
           </Nav>
         </Collapse>

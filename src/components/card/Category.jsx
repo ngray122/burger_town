@@ -17,15 +17,14 @@ const Category = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {
     headers.map((header) => {
-      setPath(header);
+      return setPath(header);
     });
-  }, [path]);
+  }, [path, headers, setPath]);
 
   return (
     <>
       <Container>
         <SearchBar />
-
         <ItemPagination
           itemsPerPage={itemsPerPage}
           totalItems={allHeaders.length}
