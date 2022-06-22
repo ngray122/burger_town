@@ -18,7 +18,6 @@ const headersMap = {
   episodes: "Episodes",
   pestControlTruck: "Pest Control Truck",
   burgerOfTheDay: "Burger Of The Day",
-  endCreditsSequence: undefined,
 };
 const NavBarComponent = () => {
   const { headers, setPath } = useContext(ApiContext);
