@@ -1,0 +1,35 @@
+@font-face {
+    font-family: burgerFont;
+    src: url(../../fonts/Bob_Burgers_2.ttf) format("truetype") ;
+}
+
+.logo {
+  font-family: burgerFont;
+  font-size: 2.5em;
+  color:#f3ee0f;
+  /* color:#ff051d */
+  
+}
+.logo:hover {
+  font-family: burgerFont;
+  font-size: 2.5;
+  color:#ff051d;
+  
+}
+
+.nav_links {
+  font-family: burgerFont;
+  text-decoration: none;
+  color:#f3ee0f;
+  font-size: 2em;
+}
+
+.nav_links:hover {
+  font-family: burgerFont;
+  text-decoration: none;
+  color:#ff051d;
+
+}
+.navbar_toggler {
+  font-size: 1.5em;
+}

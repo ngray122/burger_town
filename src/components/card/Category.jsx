@@ -3,7 +3,6 @@ import { Container } from "reactstrap";
 import ItemPagination from "./ItemPagination";
 import SearchBar from "../search/SearchBar";
 import { ApiContext } from "../../App";
-import ResultModal from "../modal/ResultModal";
 
 const Category = () => {
   const {
@@ -18,9 +17,9 @@ const Category = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {
     headers.map((header) => {
-      setPath(header);
+      return setPath(header);
     });
-  }, [path]);
+  }, [path, headers, setPath]);
 
   return (
     <>
