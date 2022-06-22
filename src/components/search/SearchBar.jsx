@@ -31,18 +31,18 @@ const SearchBar = () => {
   // allItems
   const renderQueryMatch = () => {
     return allItems.map((item) => {
-      console.log("item in searchbar", item);
-      console.log("item in searchbar", item.name);
-      <Col key={item.id} onClick={() => handleToggle(item)}>
-        <OneCard>
-          <CardBody>
-            <CardImg image={item.image} />
-            <CardTitle name={item.name} />
-            <CardSubtitle season={item.season} episode={item.episode} />
-            <CardSubtitle price={item.price} />
-          </CardBody>
-        </OneCard>
-      </Col>;
+      return (
+        <Col key={item.id} onClick={() => handleToggle(item)}>
+          <OneCard key={item.id}>
+            <CardBody>
+              <CardImg image={item.image} />
+              <CardTitle name={item.name} />
+              <CardSubtitle season={item.season} episode={item.episode} />
+              <CardSubtitle price={item.price} />
+            </CardBody>
+          </OneCard>
+        </Col>
+      );
     });
   };
 
