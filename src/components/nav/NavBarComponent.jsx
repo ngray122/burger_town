@@ -18,6 +18,7 @@ const headersMap = {
   episodes: "Episodes",
   pestControlTruck: "Pest Control Truck",
   burgerOfTheDay: "Burger Of The Day",
+  endCreditsSequence: undefined,
 };
 const NavBarComponent = () => {
   const { headers, setPath } = useContext(ApiContext);
@@ -36,20 +37,22 @@ const NavBarComponent = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <UncontrolledDropdown nav>
-              {headers.map((header, id) => (
-                <DropdownToggle key={id} nav>
-                  <Link
-                    className={styles.nav_links}
-                    key={id}
-                    onClick={() => setPath(header)}
-                    to={`/categories/${header}`}
-                  >
-                    <span className={styles.header_links}>
-                      {headersMap[header] ?? <></>}
-                    </span>
-                  </Link>
-                </DropdownToggle>
-              ))}
+              {headers.map((header, id) =>
+                header === "endCreditsSequence" ? null : (
+                  <DropdownToggle key={id} nav>
+                    <Link
+                      className={styles.nav_links}
+                      key={id}
+                      onClick={() => setPath(header)}
+                      to={`/categories/${header}`}
+                    >
+                      <span className={styles.header_links}>
+                        {headersMap[header] ?? <></>}
+                      </span>
+                    </Link>
+                  </DropdownToggle>
+                )
+              )}
             </UncontrolledDropdown>
           </Nav>
         </Collapse>
