@@ -5,7 +5,6 @@ import {
   NavbarToggler,
   Collapse,
   Nav,
-  NavItem,
   UncontrolledDropdown,
   DropdownToggle,
 } from "reactstrap";
@@ -13,6 +12,13 @@ import { Link } from "react-router-dom";
 import { ApiContext } from "../../App";
 import styles from "./NavBarComponent.module.css";
 
+const headersMap = {
+  storeNextDoor: "Store Next Door",
+  characters: "Characters",
+  episodes: "Episodes",
+  pestControlTruck: "Pest Control Truck",
+  burgerOfTheDay: "Burger Of The Day",
+};
 const NavBarComponent = () => {
   const { headers, setPath } = useContext(ApiContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -40,17 +46,7 @@ const NavBarComponent = () => {
                     onClick={() => setPath(header)}
                     to={`/categories/${header}`}
                   >
-                    {header === "storeNextDoor" ? (
-                      <span>Store Next Door</span>
-                    ) : header === "characters" ? (
-                      <span>Characters</span>
-                    ) : header === "episodes" ? (
-                      <span>Episodes</span>
-                    ) : header === "pestControlTruck" ? (
-                      <span>Pest Control Truck</span>
-                    ) : header === "burgerOfTheDay" ? (
-                      <span>Burger Of The Day</span>
-                    ) : null}
+                    <span>{headersMap[header] ?? <></>}</span>
                   </Link>
                 </DropdownToggle>
               ))}
