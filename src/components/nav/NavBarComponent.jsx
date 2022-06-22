@@ -46,7 +46,9 @@ const NavBarComponent = () => {
                     onClick={() => setPath(header)}
                     to={`/categories/${header}`}
                   >
-                    <span>{headersMap[header] ?? <></>}</span>
+                    <span className={styles.header_links}>
+                      {headersMap[header] ?? <></>}
+                    </span>
                   </Link>
                 </DropdownToggle>
               ))}
