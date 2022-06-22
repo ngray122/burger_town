@@ -27,8 +27,6 @@ const SearchBar = () => {
     return searchInput;
   };
 
-  // move .map logic in getQueryMatch, and use
-  // allItems
   const renderQueryMatch = () => {
     return allItems.map((item) => {
       return (
@@ -53,6 +51,8 @@ const SearchBar = () => {
     },
     [toggle, setActiveItem]
   );
+  const indexOfLastPost = currentPage * itemsPerPage;
+  const indexOfFirstPost = indexOfLastPost - itemsPerPage;
 
   useEffect(() => {
     let items = singleHeader.filter((item) => {
@@ -64,10 +64,7 @@ const SearchBar = () => {
       }
     });
     return setAllItems(items.slice(indexOfFirstPost, indexOfLastPost));
-  }, [singleHeader, searchInput]);
-
-  const indexOfLastPost = currentPage * itemsPerPage;
-  const indexOfFirstPost = indexOfLastPost - itemsPerPage;
+  }, [singleHeader, searchInput, indexOfFirstPost, indexOfLastPost]);
 
   const submitHandler = (e) => {
     e.preventDefault();
