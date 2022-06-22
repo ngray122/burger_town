@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Input, Form, Button } from "reactstrap";
 import OneCard from "../card/OneCard";
 import { ApiContext } from "../../App";
@@ -29,23 +29,22 @@ const SearchBar = () => {
 
   // move .map logic in getQueryMatch, and use
   // allItems
-  // const renderQueryMatch = () => {
-  //   allItems.map((item) => {
-  //     console.log("item in searchbar", item);
-  //     return (
-  //       <Col key={item.id} onClick={() => handleToggle(item)}>
-  //         <OneCard>
-  //           <CardBody>
-  //             <CardImg image={item.image} />
-  //             <CardTitle name={item.name} />
-  //             <CardSubtitle season={item.season} episode={item.episode} />
-  //             <CardSubtitle price={item.price} />
-  //           </CardBody>
-  //         </OneCard>
-  //       </Col>
-  //     );
-  //   });
-  // };
+  const renderQueryMatch = () => {
+    return allItems.map((item) => {
+      console.log("item in searchbar", item);
+      console.log("item in searchbar", item.name);
+      <Col key={item.id} onClick={() => handleToggle(item)}>
+        <OneCard>
+          <CardBody>
+            <CardImg image={item.image} />
+            <CardTitle name={item.name} />
+            <CardSubtitle season={item.season} episode={item.episode} />
+            <CardSubtitle price={item.price} />
+          </CardBody>
+        </OneCard>
+      </Col>;
+    });
+  };
 
   const handleToggle = useCallback(
     (item) => {
@@ -55,35 +54,18 @@ const SearchBar = () => {
     [toggle, setActiveItem]
   );
 
-  const getQueryMatch = () => {
-    let items = singleHeader
-      .filter((item) => {
-        if (
-          item.hasOwnProperty("name") &&
-          item.name.toLowerCase().includes(searchInput.toLowerCase())
-        ) {
-          return item;
-        }
-      })
-      .map((item) => {
-        return (
-          <Col key={item.id} onClick={() => handleToggle(item)}>
-            <OneCard>
-              <CardBody>
-                <CardImg image={item.image} />
-                <CardTitle name={item.name} />
-                <CardSubtitle season={item.season} episode={item.episode} />
-                <CardSubtitle price={item.price} />
-              </CardBody>
-            </OneCard>
-          </Col>
-        );
-      });
+  useEffect(() => {
+    let items = singleHeader.filter((item) => {
+      if (
+        item.hasOwnProperty("name") &&
+        item.name.toLowerCase().includes(searchInput.toLowerCase())
+      ) {
+        return item;
+      }
+    });
+    return setAllItems(items.slice(indexOfFirstPost, indexOfLastPost));
+  }, [singleHeader, searchInput]);
 
-    // these items need to live in local state
-    // setAllItems(items.slice(indexOfFirstPost, indexOfLastPost))
-    return items.slice(indexOfFirstPost, indexOfLastPost);
-  };
   const indexOfLastPost = currentPage * itemsPerPage;
   const indexOfFirstPost = indexOfLastPost - itemsPerPage;
 
@@ -107,7 +89,7 @@ const SearchBar = () => {
         </Form>
 
         <Row xs={1} md={columnsPerRow}>
-          {getQueryMatch()}
+          {renderQueryMatch()}
         </Row>
       </div>
       {openModal && <ResultModal onClick={handleToggle} item={activeItem} />}
