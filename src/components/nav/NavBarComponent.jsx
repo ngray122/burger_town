@@ -32,9 +32,7 @@ const NavBarComponent = () => {
         <NavbarBrand href="/">
           <h1 className={styles.logo}>BurgerTown</h1>
         </NavbarBrand>
-
         <NavbarToggler onClick={isToggle} className={styles.navbar_toggler} />
-
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <UncontrolledDropdown nav>
