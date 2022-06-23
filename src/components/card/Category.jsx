@@ -5,15 +5,8 @@ import SearchBar from "../search/SearchBar";
 import { ApiContext } from "../../App";
 
 const Category = () => {
-  const {
-    setCurrentPage,
-    allHeaders,
-    itemsPerPage,
-    currentPage,
-    headers,
-    setPath,
-    path,
-  } = useContext(ApiContext);
+  const { setCurrentPage, allHeaders, itemsPerPage, currentPage } =
+    useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
