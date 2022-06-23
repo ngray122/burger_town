@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Container } from "reactstrap";
 import ItemPagination from "./ItemPagination";
 import SearchBar from "../search/SearchBar";
