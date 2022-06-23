@@ -1,25 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Container } from "reactstrap";
 import ItemPagination from "./ItemPagination";
 import SearchBar from "../search/SearchBar";
 import { ApiContext } from "../../App";
 
 const Category = () => {
-  const {
-    setCurrentPage,
-    allHeaders,
-    itemsPerPage,
-    currentPage,
-    headers,
-    setPath,
-    path,
-  } = useContext(ApiContext);
+  const { setCurrentPage, allHeaders, itemsPerPage, currentPage } =
+    useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  useEffect(() => {
-    headers.map((header) => {
-      return setPath(header);
-    });
-  }, [path, headers, setPath]);
 
   return (
     <>
