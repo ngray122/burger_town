@@ -25,7 +25,7 @@ const SearchBar = () => {
 
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
-    return searchInput;
+    // return searchInput;
   };
 
   const renderQueryMatch = () => {

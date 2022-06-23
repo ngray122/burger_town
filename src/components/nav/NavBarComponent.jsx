@@ -20,7 +20,7 @@ const headersMap = {
   burgerOfTheDay: "Burger Of The Day",
 };
 const NavBarComponent = () => {
-  const { headers, setPath } = useContext(ApiContext);
+  const { headers, setPath, path } = useContext(ApiContext);
   const [isOpen, setIsOpen] = useState(false);
   const isToggle = (e) => {
     setIsOpen(!isOpen);
@@ -36,13 +36,17 @@ const NavBarComponent = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <UncontrolledDropdown nav>
+              {/* {console.log("headers", headers)} */}
               {headers.map((header, id) =>
                 header === "endCreditsSequence" ? null : (
                   <DropdownToggle key={id} nav>
                     <Link
                       className={styles.nav_links}
                       key={id}
-                      onClick={() => setPath(header)}
+                      onClick={() => {
+                        console.log("header in onClick", header);
+                        setPath(header);
+                      }}
                       to={`/categories/${header}`}
                     >
                       <span className={styles.header_links}>

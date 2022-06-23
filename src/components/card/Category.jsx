@@ -15,11 +15,6 @@ const Category = () => {
     path,
   } = useContext(ApiContext);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  useEffect(() => {
-    headers.map((header) => {
-      return setPath(header);
-    });
-  }, [path, headers, setPath]);
 
   return (
     <>
