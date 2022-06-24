@@ -30,7 +30,11 @@ const NavBarComponent = () => {
     <div>
       <Navbar color="dark" dark>
         <NavbarBrand href="/">
-          <h1 className={styles.logo}>BurgerTown</h1>
+          <img
+            className={styles.nav_logo}
+            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e503f688-c23b-44bc-96d8-1c0c9958121f/d7rvdss-e8fe7e03-3e9e-47a4-bd66-cf650ed1ed68.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2U1MDNmNjg4LWMyM2ItNDRiYy05NmQ4LTFjMGM5OTU4MTIxZlwvZDdydmRzcy1lOGZlN2UwMy0zZTllLTQ3YTQtYmQ2Ni1jZjY1MGVkMWVkNjgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.124ovyeSJTtbXpI8rkA_KR61QNaM3smdQC2-ZUH7kY4"
+            alt="kuchi kopi"
+          ></img>
         </NavbarBrand>
         <NavbarToggler onClick={isToggle} className={styles.navbar_toggler} />
         <Collapse isOpen={isOpen} navbar>
