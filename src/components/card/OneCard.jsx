@@ -1,5 +1,9 @@
 import React from "react";
-import { Card } from "reactstrap";
-
-const OneCard = ({ children }) => <Card>{children}</Card>;
+import { Card, CardBody } from "reactstrap";
+import styles from "./OneCard.module.css";
+const OneCard = ({ children }) => (
+  <Card>
+    <CardBody>{children}</CardBody>
+  </Card>
+);
 export default OneCard;
