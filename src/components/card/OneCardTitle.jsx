@@ -1,7 +1,8 @@
 import React from "react";
 import { CardTitle } from "reactstrap";
+import styles from "./OneCard.module.css";
 
 const OneCardTitle = ({ name }) =>
-  name ? <CardTitle tag="h5">{name}</CardTitle> : null;
+  name ? <CardTitle className={styles.card_title}>{name}</CardTitle> : null;
 
 export default OneCardTitle;

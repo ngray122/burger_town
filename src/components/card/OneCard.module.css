@@ -1,9 +1,18 @@
-.single_card {
+@font-face {
+    font-family: burgerFont;
+    src: url(../../fonts/Bob_Burgers_2.ttf) format("truetype");
+  }
+.card_img {
      margin-bottom: 10px;
      /* min-height: 300px; */
  }
 
-.card_img {
-     /* min-height:300px; */
+ .single_card {
+    margin-bottom: 10px;
+   
+ }
 
+ .card_title{
+    font-family: burgerFont;
+    font-size: 2.5em;
  }
