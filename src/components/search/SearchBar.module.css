@@ -8,3 +8,7 @@
 .search_button {
     margin-bottom: 20px;
 }
+
+.card_wrapper {
+    align-items: center;
+}

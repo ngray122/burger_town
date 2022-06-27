@@ -88,7 +88,7 @@ const SearchBar = () => {
         </Button>
       </Form>
 
-      <Row xs={2} md={columnsPerRow}>
+      <Row xs={2} md={columnsPerRow} className={styles.card_wrapper}>
         {renderQueryMatch()}
       </Row>
       {openModal && <ResultModal onClick={handleToggle} item={activeItem} />}
