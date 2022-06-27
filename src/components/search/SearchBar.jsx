@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Input, Form, Button } from "reactstrap";
 import OneCard from "../card/OneCard";
 import { ApiContext } from "../../App";
-import CardImg from "../card/CardImg";
+import OneCardImg from "../card/OneCardImg";
 import OneCardTitle from "../card/OneCardTitle";
 import OneCardSubtitle from "../card/OneCardSubtitle";
 import ResultModal from "../modal/ResultModal";
@@ -34,7 +34,7 @@ const SearchBar = () => {
         <Col key={item.id} onClick={() => handleToggle(item)}>
           <OneCard key={item.id}>
             <CardBody>
-              <CardImg image={item.image} />
+              <OneCardImg image={item.image} />
               <OneCardTitle name={item.name} />
               <OneCardSubtitle season={item.season} episode={item.episode} />
               <OneCardSubtitle price={item.price} />
@@ -88,7 +88,7 @@ const SearchBar = () => {
         </Button>
       </Form>
 
-      <Row xs={1} md={columnsPerRow}>
+      <Row xs={2} md={columnsPerRow}>
         {renderQueryMatch()}
       </Row>
       {openModal && <ResultModal onClick={handleToggle} item={activeItem} />}

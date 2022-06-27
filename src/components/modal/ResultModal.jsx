@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Modal, ModalBody } from "reactstrap";
 import { ApiContext } from "../../App";
 import OneCard from "../card/OneCard";
-import CardImg from "../card/CardImg";
+import OneCardImg from "../card/OneCardImg";
 import OneCardTitle from "../card/OneCardTitle";
 import OneCardSubtitle from "../card/OneCardSubtitle";
 import OneCardText from "../card/OneCardText";
@@ -31,7 +31,7 @@ const ResultModal = ({ item }) => {
         <Modal isOpen autoFocus key={item.id} onClick={toggle}>
           <OneCard>
             <ModalBody>
-              <CardImg image={image} />
+              <OneCardImg image={image} />
               <OneCardTitle name={name} />
               <OneCardSubtitle firstEpisode={firstEpisode} />
 
