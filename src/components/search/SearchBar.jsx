@@ -3,8 +3,8 @@ import { Input, Form, Button } from "reactstrap";
 import OneCard from "../card/OneCard";
 import { ApiContext } from "../../App";
 import CardImg from "../card/CardImg";
-import CardTitle from "../card/CardTitle";
-import CardSubtitle from "../card/CardSubtitle";
+import OneCardTitle from "../card/OneCardTitle";
+import OneCardSubtitle from "../card/OneCardSubtitle";
 import ResultModal from "../modal/ResultModal";
 import { Row, Col, CardBody } from "reactstrap";
 import styles from "./SearchBar.module.css";
@@ -35,9 +35,9 @@ const SearchBar = () => {
           <OneCard key={item.id}>
             <CardBody>
               <CardImg image={item.image} />
-              <CardTitle name={item.name} />
-              <CardSubtitle season={item.season} episode={item.episode} />
-              <CardSubtitle price={item.price} />
+              <OneCardTitle name={item.name} />
+              <OneCardSubtitle season={item.season} episode={item.episode} />
+              <OneCardSubtitle price={item.price} />
             </CardBody>
           </OneCard>
         </Col>
