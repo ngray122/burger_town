@@ -3,6 +3,10 @@ import { CardTitle } from "reactstrap";
 import styles from "./OneCard.module.css";
 
 const OneCardTitle = ({ name }) =>
-  name ? <CardTitle className={styles.card_title}>{name}</CardTitle> : null;
+  name ? (
+    <CardTitle>
+      <h1 className={styles.card_title}>{name}</h1>
+    </CardTitle>
+  ) : null;
 
 export default OneCardTitle;
