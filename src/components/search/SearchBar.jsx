@@ -11,14 +11,8 @@ import styles from "./SearchBar.module.css";
 import { useCallback } from "react";
 
 const SearchBar = () => {
-  const {
-    singleHeader,
-    columnsPerRow,
-    itemsPerPage,
-    currentPage,
-    openModal,
-    toggle,
-  } = useContext(ApiContext);
+  const { singleHeader, itemsPerPage, currentPage, openModal, toggle } =
+    useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
   const [activeItem, setActiveItem] = useState();
   const [allItems, setAllItems] = useState([]);
@@ -88,7 +82,7 @@ const SearchBar = () => {
         </Button>
       </Form>
 
-      <Row xs={2} md={columnsPerRow} className={styles.card_wrapper}>
+      <Row xs={2} sm={2} md={3} lg={4} xl={5} className={styles.card_wrapper}>
         {renderQueryMatch()}
       </Row>
       {openModal && <ResultModal onClick={handleToggle} item={activeItem} />}
