@@ -4,6 +4,8 @@
   }
 .card_img {
      margin-bottom: 10px;
+    max-height: 200px;
+
  }
 
  .single_card {
@@ -27,3 +29,6 @@
  .card_subtitle {
      margin-bottom: 10px;
  }
+
+ .modal_img {
+}
