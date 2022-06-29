@@ -1,5 +1,5 @@
 import React from "react";
-import CardText, { CardSubtitle } from "reactstrap";
+import { CardSubtitle } from "reactstrap";
 import styles from "./OneCard.module.css";
 
 const OneCardSubtitle = ({ firstEpisode }) =>

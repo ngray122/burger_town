@@ -7,8 +7,6 @@ import OneCardTitle from "../card/OneCardTitle";
 import OneCardSubtitle from "../card/OneCardSubtitle";
 import OneCardText from "../card/OneCardText";
 
-import styles from "../modal/ResultModal.module.css";
-
 const ResultModal = ({ item }) => {
   const { toggle } = useContext(ApiContext);
   const {
