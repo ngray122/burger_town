@@ -1,5 +1,6 @@
 import React from "react";
 import { CardText } from "reactstrap";
+import styles from "./OneCard.module.css";
 
 const OneCardText = ({
   season,
@@ -18,32 +19,64 @@ const OneCardText = ({
 }) =>
   episode ? (
     <CardText>
-      Season {season}, Episode {episode}
+      <span className={styles.card_text}>Season {season},</span>{" "}
+      <span className={styles.card_text}>Episode {episode}</span>
     </CardText>
   ) : null || price ? (
-    <CardText>Price: {price}</CardText>
+    <CardText>
+      <span className={styles.card_text}>Price: </span>
+      {price}
+    </CardText>
   ) : null || age ? (
-    <CardText>Age: {age}</CardText>
+    <CardText>
+      <span className={styles.card_text}>Age: </span>
+      {age}
+    </CardText>
   ) : null || gender ? (
-    <CardText>Gender: {gender}</CardText>
+    <CardText>
+      <span className={styles.card_text}>Gender: </span>
+      {gender}
+    </CardText>
   ) : null || hairColor ? (
-    <CardText>Hair Color: {hairColor}</CardText>
+    <CardText>
+      <span className={styles.card_text}>Hair Color: </span>
+      {hairColor}
+    </CardText>
   ) : null || occupation ? (
-    <CardText>Occupation: {occupation}</CardText>
+    <CardText>
+      <span className={styles.card_text}>Occupation:</span> {occupation}
+    </CardText>
   ) : null || voicedBy ? (
-    <CardText>Voiced By: {voicedBy}</CardText>
+    <CardText>
+      <span className={styles.card_text}>Voiced By:</span> {voicedBy}
+    </CardText>
   ) : null || wikiUrl ? (
-    <CardText>Wiki Url: {wikiUrl}</CardText>
+    <CardText>
+      <span className={styles.card_text}>Wiki Url: </span>
+      {wikiUrl}
+    </CardText>
   ) : null || firstEpisode ? (
-    <CardText>First Episode: {firstEpisode}</CardText>
+    <CardText>
+      <span className={styles.card_text}>First Episode: </span>
+      {firstEpisode}
+    </CardText>
   ) : null || relatives ? (
     relatives.map((relative, id) => (
-      <CardText key={id}> Relative: {relative.name}</CardText>
+      <CardText key={id}>
+        {" "}
+        <span className={styles.card_text}>Relative: </span>
+        {relative.name}
+      </CardText>
     ))
   ) : null || airDate ? (
-    <CardText>Air Date: {airDate}</CardText>
+    <CardText>
+      <span className={styles.card_text}>Air Date: </span>
+      {airDate}
+    </CardText>
   ) : null || totalViewers ? (
-    <CardText>Total Viewers: {totalViewers}</CardText>
+    <CardText>
+      <span className={styles.card_text}>Total Viewers:</span> {totalViewers}
+    </CardText>
   ) : null;
 
 export default OneCardText;
