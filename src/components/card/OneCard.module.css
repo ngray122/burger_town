@@ -4,7 +4,7 @@
   }
 .card_img {
      margin-bottom: 10px;
-    max-height: 200px;
+    max-height: 300px;
 
  }
 
@@ -31,4 +31,6 @@
  }
 
  .modal_img {
+     max-height:200px;
+     max-width: 200px;
 }
