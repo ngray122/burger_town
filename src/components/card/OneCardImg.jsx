@@ -10,7 +10,7 @@ const OneCardImg = ({ image }) => {
     <div>
       <CardImg
         className={openModal ? styles.modal_img : styles.card_img}
-        alt="character"
+        alt={`of ${image}`}
         src={image}
         width="100%"
         top

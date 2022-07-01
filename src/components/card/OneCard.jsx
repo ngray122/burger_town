@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card, CardBody } from "reactstrap";
 import styles from "./OneCard.module.css";
-const OneCard = ({ children }) => (
-  <Card className={`shadow ${styles.single_card}`}>
-    <CardBody>{children}</CardBody>
-  </Card>
-);
+import { ApiContext } from "../../App";
+
+const OneCard = ({ children }) => {
+  const { openModal } = useContext(ApiContext);
+
+  return (
+    <Card
+      className={openModal ? styles.modal_card : `shadow ${styles.single_card}`}
+    >
+      <CardBody>{children}</CardBody>
+    </Card>
+  );
+};
 export default OneCard;
