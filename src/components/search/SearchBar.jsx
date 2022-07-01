@@ -9,10 +9,19 @@ import ResultModal from "../modal/ResultModal";
 import { Row, Col, CardBody } from "reactstrap";
 import styles from "./SearchBar.module.css";
 import { useCallback } from "react";
+import ItemPagination from "../pagination/ItemPagination";
 
 const SearchBar = () => {
-  const { singleHeader, itemsPerPage, currentPage, openModal, toggle } =
-    useContext(ApiContext);
+  const {
+    singleHeader,
+    itemsPerPage,
+    currentPage,
+    openModal,
+    toggle,
+    allHeaders,
+    paginate,
+    setCurrentPage,
+  } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
   const [activeItem, setActiveItem] = useState();
   const [allItems, setAllItems] = useState([]);
@@ -81,6 +90,13 @@ const SearchBar = () => {
           Clear Search
         </Button>
       </Form>
+      <ItemPagination
+        itemsPerPage={itemsPerPage}
+        totalItems={allHeaders.length}
+        paginate={paginate}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
 
       <Row xs={2} sm={2} md={3} lg={4} xl={5} className={styles.card_wrapper}>
         {renderQueryMatch()}
