@@ -10,19 +10,21 @@ const ItemPagination = ({ totalItems, paginate }) => {
     pageNumbers.push(i);
   }
   return (
-    <Pagination size="lg">
-      <PaginationLink
-        className={styles.pagination_link}
-        first
-        onClick={() => setCurrentPage(currentPage - 1)}
-      ></PaginationLink>
+    <div className={styles.pagination_wrapper}>
+      <Pagination center>
+        <PaginationLink
+          className={styles.pagination_link}
+          first
+          onClick={() => setCurrentPage(currentPage - 1)}
+        ></PaginationLink>
 
-      <PaginationLink
-        className={styles.pagination_link}
-        last
-        onClick={() => setCurrentPage(currentPage + 1)}
-      ></PaginationLink>
-    </Pagination>
+        <PaginationLink
+          className={styles.pagination_link}
+          last
+          onClick={() => setCurrentPage(currentPage + 1)}
+        ></PaginationLink>
+      </Pagination>
+    </div>
   );
 };
 

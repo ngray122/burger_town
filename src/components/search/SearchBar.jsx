@@ -77,7 +77,7 @@ const SearchBar = () => {
     return;
   };
   return (
-    <div>
+    <div className={styles.search_bar_wrapper}>
       <Form onSubmit={submitHandler}>
         <Input
           placeholder={`Search ...`}
