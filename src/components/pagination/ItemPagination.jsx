@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Pagination, PaginationLink, PaginationItem } from "reactstrap";
 import { ApiContext } from "../../App";
+import styles from "./ItemPagination.module.css";
 
 const ItemPagination = ({ totalItems, paginate }) => {
   const pageNumbers = [];
@@ -9,20 +10,18 @@ const ItemPagination = ({ totalItems, paginate }) => {
     pageNumbers.push(i);
   }
   return (
-    <Pagination>
-      <PaginationLink onClick={() => setCurrentPage(currentPage - 1)}>
-        back
-      </PaginationLink>
-      {pageNumbers.map((number) => (
-        <PaginationItem key={number}>
-          <PaginationLink onClick={() => paginate(number)}>
-            {number}
-          </PaginationLink>
-        </PaginationItem>
-      ))}
-      <PaginationLink onClick={() => setCurrentPage(currentPage + 1)}>
-        next
-      </PaginationLink>
+    <Pagination size="lg">
+      <PaginationLink
+        className={styles.pagination_link}
+        first
+        onClick={() => setCurrentPage(currentPage - 1)}
+      ></PaginationLink>
+
+      <PaginationLink
+        className={styles.pagination_link}
+        last
+        onClick={() => setCurrentPage(currentPage + 1)}
+      ></PaginationLink>
     </Pagination>
   );
 };
