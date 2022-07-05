@@ -12,17 +12,20 @@ const ItemPagination = ({ totalItems, paginate }) => {
   return (
     <div className={styles.pagination_wrapper}>
       <Pagination center>
-        <PaginationLink
-          className={styles.pagination_link}
-          first
-          onClick={() => setCurrentPage(currentPage - 1)}
-        ></PaginationLink>
-
-        <PaginationLink
-          className={styles.pagination_link}
-          last
-          onClick={() => setCurrentPage(currentPage + 1)}
-        ></PaginationLink>
+        <PaginationItem>
+          <PaginationLink
+            className={styles.pagination_link}
+            first
+            onClick={() => setCurrentPage(currentPage - 1)}
+          ></PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink
+            className={styles.pagination_link}
+            last
+            onClick={() => setCurrentPage(currentPage + 1)}
+          ></PaginationLink>
+        </PaginationItem>
       </Pagination>
     </div>
   );

@@ -1,12 +1,13 @@
 .pagination_link {
     background-color:#212529;
-    border: none;
     margin:20px;
-    border-radius: 75%;
     color: white;
-    /* display:flex; */
-    /* align-content: center; */
-    justify-content: center;
+
+
+}
+.pagination_link:focus {
+    background-color:#212529;
+    color: white;
 
 }
 .pagination_link:hover {
