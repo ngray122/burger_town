@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Container } from "reactstrap";
-import ItemPagination from "./ItemPagination";
+import ItemPagination from "../pagination/ItemPagination";
 import SearchBar from "../search/SearchBar";
 import { ApiContext } from "../../App";
 

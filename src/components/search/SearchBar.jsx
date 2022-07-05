@@ -2,22 +2,25 @@ import React, { useState, useContext, useEffect } from "react";
 import { Input, Form, Button } from "reactstrap";
 import OneCard from "../card/OneCard";
 import { ApiContext } from "../../App";
-import CardImg from "../card/CardImg";
-import CardTitle from "../card/CardTitle";
-import CardSubtitle from "../card/CardSubtitle";
+import OneCardImg from "../card/OneCardImg";
+import OneCardTitle from "../card/OneCardTitle";
+import OneCardSubtitle from "../card/OneCardSubtitle";
 import ResultModal from "../modal/ResultModal";
 import { Row, Col, CardBody } from "reactstrap";
 import styles from "./SearchBar.module.css";
 import { useCallback } from "react";
+import ItemPagination from "../pagination/ItemPagination";
 
 const SearchBar = () => {
   const {
     singleHeader,
-    columnsPerRow,
     itemsPerPage,
     currentPage,
     openModal,
     toggle,
+    allHeaders,
+    paginate,
+    setCurrentPage,
   } = useContext(ApiContext);
   const [searchInput, setSearchInput] = useState("");
   const [activeItem, setActiveItem] = useState();
@@ -34,10 +37,10 @@ const SearchBar = () => {
         <Col key={item.id} onClick={() => handleToggle(item)}>
           <OneCard key={item.id}>
             <CardBody>
-              <CardImg image={item.image} />
-              <CardTitle name={item.name} />
-              <CardSubtitle season={item.season} episode={item.episode} />
-              <CardSubtitle price={item.price} />
+              <OneCardImg image={item.image} />
+              <OneCardTitle name={item.name} />
+              <OneCardSubtitle season={item.season} episode={item.episode} />
+              <OneCardSubtitle price={item.price} />
             </CardBody>
           </OneCard>
         </Col>
@@ -74,7 +77,7 @@ const SearchBar = () => {
     return;
   };
   return (
-    <div>
+    <div className={styles.search_bar_wrapper}>
       <Form onSubmit={submitHandler}>
         <Input
           placeholder={`Search ...`}
@@ -87,8 +90,15 @@ const SearchBar = () => {
           Clear Search
         </Button>
       </Form>
+      <ItemPagination
+        itemsPerPage={itemsPerPage}
+        totalItems={allHeaders.length}
+        paginate={paginate}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
 
-      <Row xs={1} md={columnsPerRow}>
+      <Row xs={2} sm={2} md={3} lg={4} xl={5} className={styles.card_wrapper}>
         {renderQueryMatch()}
       </Row>
       {openModal && <ResultModal onClick={handleToggle} item={activeItem} />}
